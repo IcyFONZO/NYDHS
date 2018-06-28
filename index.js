@@ -29,9 +29,10 @@ client.on("ready", message => {
 });
 
 client.on("message", message => {
-    if(message.author.bot) return;
+  if(message.content == 'SS') {  
+  if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
-   
+    
     console.log("gatcha!");
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
@@ -42,7 +43,7 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-    });
+    }});
   }
 });
 
