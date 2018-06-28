@@ -40,11 +40,12 @@ client.on("message", message => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
-      message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
+      message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-    }});
+    };
+    });
   }
 });
 
