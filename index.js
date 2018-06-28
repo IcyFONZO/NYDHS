@@ -8,7 +8,7 @@ const discordChannelID = process.env.DISCORD_CHANNEL_ID;
 const trelloIDList = process.env.TRELLO_ID_LIST_SS;
 const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 
-[trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList].forEach(i => {
+[trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList, trelloIDList2].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
