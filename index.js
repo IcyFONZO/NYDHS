@@ -26,13 +26,15 @@ client.on("ready", message => {
 
 client.on("message", message => {
   if (message.channel.id === discordChannelID) {
-    
-     message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
-    
+   
     console.log("gatcha!");
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+  
+      message.delete().catch();
+      message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
+      
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
     });
