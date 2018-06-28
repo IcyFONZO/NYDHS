@@ -44,7 +44,7 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-    };
+   
     });
   }
 });
