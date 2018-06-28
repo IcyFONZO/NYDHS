@@ -22,7 +22,7 @@ const discord = require("discord.js");
 const client = new discord.Client();
 const Trello = require("node-trello");
 const trelloClient = new Trello(trelloKey, trelloToken);
-const postTrello = require("./lib/trello/post_trello");
+const postTrello = require("./lib/trello/post_trello_SS");
 
 client.on("ready", message => {
   console.log("bot is ready, stand by...");
