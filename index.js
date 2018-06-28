@@ -5,7 +5,7 @@ const trelloKey = process.env.TRELLO_KEY;
 const trelloToken = process.env.TRELLO_TOKEN;
 const discordBotToken = process.env.DISCORD_BOT_TOKEN;
 const discordChannelID = process.env.DISCORD_CHANNEL_ID;
-const trelloIDList = process.env.TRELLO_ID_LIST;
+const trelloIDList = process.env.TRELLO_ID_LIST_SS;
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList].forEach(i => {
   if (!i) {
