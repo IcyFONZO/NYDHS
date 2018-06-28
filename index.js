@@ -43,7 +43,7 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
     })};
     
-    client.on("message", message => {
+   
     if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
    
@@ -59,7 +59,7 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-    })};
+    };
   }
 });
 
