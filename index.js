@@ -5,9 +5,13 @@ const trelloKey = process.env.TRELLO_KEY;
 const trelloToken = process.env.TRELLO_TOKEN;
 const discordBotToken = process.env.DISCORD_BOT_TOKEN;
 const discordChannelID = process.env.DISCORD_CHANNEL_ID;
-const trelloIDList2 = process.env.TRELLO_ID_LIST_IO;
+const trelloIDList = process.env.TRELLO_ID_LIST_SS;
+const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
+const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
+const trelloIDList4 = process.env.TRELLO_ID_LIST_IO;
 
-[trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList2].forEach(i => {
+
+[trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
@@ -30,7 +34,7 @@ client.on("message", message => {
    
     console.log("gatcha!");
 
-    postTrello(trelloClient, trelloIDList2, message).then((data) => {
+    postTrello(trelloClient, trelloIDList, message).then((data) => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
