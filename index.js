@@ -34,7 +34,7 @@ client.on("message", message => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
-      async message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
+      message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
