@@ -32,7 +32,7 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
     
-    if(message.content == 'SS') { 
+    
     
     console.log("gatcha!");
 
