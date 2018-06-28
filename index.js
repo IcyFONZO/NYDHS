@@ -6,6 +6,7 @@ const trelloToken = process.env.TRELLO_TOKEN;
 const discordBotToken = process.env.DISCORD_BOT_TOKEN;
 const discordChannelID = process.env.DISCORD_CHANNEL_ID;
 const trelloIDList = process.env.TRELLO_ID_LIST_SS;
+const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList].forEach(i => {
   if (!i) {
@@ -33,6 +34,24 @@ client.on("message", message => {
     console.log("gatcha!");
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
+      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+  
+      message.delete().catch();
+      message.reply("SUCCESS! Patrol Log Posted!").then(msg => {msg.delete(9000)})
+      
+    }).catch((err) => {
+      console.log(`FAILED!: ${err}`);
+    })};
+    
+    client.on("message", message => {
+    if(message.author.bot) return;
+  if (message.channel.id === discordChannelID) {
+   
+   if(message.content == 'SRT') {
+
+    console.log("gatcha!");
+
+    postTrello(trelloClient, trelloIDList2, message).then((data) => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
