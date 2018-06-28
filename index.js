@@ -33,9 +33,7 @@ client.on("message", message => {
   if (message.channel.id === discordChannelID) {
     
     if (message.content.startsWith("SS")) {
-    	//do stuff here
-  
-    
+    	
     console.log("gatcha!");
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
@@ -46,7 +44,7 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-   }
+   
     });
   }
 });
