@@ -45,7 +45,7 @@ client.on("message", message => {
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
       
-     if (message.content.startsWith("SRT")) {
+    if (message.content.startsWith("SRT")) {
     	
     console.log("gatcha!");
     const postTrello = require("./lib/trello/post_trello_SRT");
@@ -58,9 +58,10 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-   }
+   
     });
    }
+    }
   }
 });
 
