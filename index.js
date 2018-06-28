@@ -41,7 +41,7 @@ client.on("message", message => {
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-    };
+    }
     
     
     if(message.author.bot) return;
