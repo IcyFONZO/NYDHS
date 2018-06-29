@@ -45,19 +45,19 @@ client.on("message", message => {
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
       
-    //if (message.content.startsWith("SRT")) {
+    if (message.content.startsWith("SRT")) {
     	
-    //console.log("gatcha!");
-    //const postTrello = require("./lib/trello/post_trello_SRT");
+    console.log("gatcha!");
+    const postTrello = require("./lib/trello/post_trello_SRT");
        
-    //postTrello(trelloClient, trelloIDList2, message).then((data) => {
-      //console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+    postTrello(trelloClient, trelloIDList2, message).then((data) => {
+      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
-      //message.delete().catch();
-      //message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+      message.delete().catch();
+      message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
       
-   // }).catch((err) => {
-      //console.log(`FAILED!: ${err}`);
+    }).catch((err) => {
+      console.log(`FAILED!: ${err}`);
    
     });
    }
