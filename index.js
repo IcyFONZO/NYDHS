@@ -46,6 +46,7 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
   
     });
+  }
       
     if (message.content.startsWith("SRT")) {
     	
@@ -62,7 +63,6 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
     });
         }
-      }
     }
                         
  });
