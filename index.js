@@ -5,13 +5,14 @@ const trelloKey = process.env.TRELLO_KEY;
 const trelloToken = process.env.TRELLO_TOKEN;
 const discordBotToken = process.env.DISCORD_BOT_TOKEN;
 const discordChannelID = process.env.DISCORD_CHANNEL_ID;
+const discordInactive = process.env.DISCORD_INACTIVE;
 const trelloIDList = process.env.TRELLO_ID_LIST_SS;
 const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
+const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
 
-
-[trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4].forEach(i => {
+[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
@@ -96,6 +97,24 @@ client.on("message", message => {
           });
         }
     }
+  if(message.author.bot) return;
+  if (message.channel.id === discordInactive) {
+    if (message.content.startsWith("Name:", "NAME:")) {
+    	
+      console.log("gatcha!");
+      const postTrello = require("./lib/trello/post_trello_INACTIVE");
+         
+      postTrello(trelloClient, trelloIDList5, message).then((data) => {
+        console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+    
+        message.delete().catch();
+       message.reply("Inactivity Notice successfully uploaded to the Inactivity Notice List.").then(msg => {msg.delete(9000)})
+        
+      }).catch((err) => {
+        console.log(`FAILED!: ${err}`);
+      });
+    }
+  }
                         
  });
 
