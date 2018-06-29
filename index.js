@@ -8,7 +8,7 @@ const discordChannelID = process.env.DISCORD_CHANNEL_ID;
 const trelloIDList = process.env.TRELLO_ID_LIST_SS;
 const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
-const trelloIDList4 = process.env.TRELLO_ID_LIST_IO;
+const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4].forEach(i => {
