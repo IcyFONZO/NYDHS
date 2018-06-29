@@ -60,7 +60,7 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
    
     });
-   }
+   }}
    
   }
 });
