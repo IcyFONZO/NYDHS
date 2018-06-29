@@ -32,7 +32,7 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
     
-    if (message.content.startsWith("SS")) {
+    if (message.content.startsWith("DIVISION: SS")) {
     	
     console.log("gatcha!");
 
@@ -40,7 +40,7 @@ client.on("message", message => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
-      message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+      message.reply("Patrol log successfully uploaded to the Secret Service Patrol Log List.").then(msg => {msg.delete(9000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
@@ -48,7 +48,7 @@ client.on("message", message => {
     });
   }
       
-    if (message.content.startsWith("SRT")) {
+    if (message.content.startsWith("DIVISION: SRT")) {
     	
     console.log("gatcha!");
     const postTrello = require("./lib/trello/post_trello_SRT");
@@ -57,14 +57,14 @@ client.on("message", message => {
       console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       message.delete().catch();
-     message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+     message.reply("Patrol log successfully uploaded to the Special Responce Team Patrol Log List.").then(msg => {msg.delete(9000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
     });
     }
       
-    if (message.content.startsWith("FPS")) {
+    if (message.content.startsWith("DIVISION: FPS")) {
     	
       console.log("gatcha!");
       const postTrello = require("./lib/trello/post_trello_FPS");
@@ -73,14 +73,14 @@ client.on("message", message => {
         console.log(`SUCCESS!: ${JSON.stringify(data)}`);
         
         message.delete().catch();
-        message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+        message.reply("Patrol log successfully uploaded to the Federal Protective Service Patrol Log List.").then(msg => {msg.delete(9000)})
             
         }).catch((err) => {
           console.log(`FAILED!: ${err}`);
       });
       }
 
-    if (message.content.startsWith("HSI")) {
+    if (message.content.startsWith("DIVISION: HSI")) {
     	
           console.log("gatcha!");
           const postTrello = require("./lib/trello/post_trello_HSI");
@@ -89,7 +89,7 @@ client.on("message", message => {
             console.log(`SUCCESS!: ${JSON.stringify(data)}`);
         
             message.delete().catch();
-           message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+           message.reply("Patrol log successfully uploaded to the Intelligence Office Patrol Log List.").then(msg => {msg.delete(9000)})
             
           }).catch((err) => {
             console.log(`FAILED!: ${err}`);
