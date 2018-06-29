@@ -32,32 +32,32 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
     
-    if (message.content.startsWith("SS")) {
-    	
-    console.log("gatcha!");
-
-    postTrello(trelloClient, trelloIDList, message).then((data) => {
-      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
-  
-      message.delete().catch();
-      message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
-      
-    }).catch((err) => {
-      console.log(`FAILED!: ${err}`);
-      
-    //if (message.content.startsWith("SRT")) {
+    //if (message.content.startsWith("SS")) {
     	
     //console.log("gatcha!");
-    //const postTrello = require("./lib/trello/post_trello_SRT");
-       
-    //postTrello(trelloClient, trelloIDList2, message).then((data) => {
+
+    //postTrello(trelloClient, trelloIDList, message).then((data) => {
       //console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
       //message.delete().catch();
-     //message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+      //message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
       
     //}).catch((err) => {
       //console.log(`FAILED!: ${err}`);
+      
+    if (message.content.startsWith("SRT")) {
+    	
+    console.log("gatcha!");
+    const postTrello = require("./lib/trello/post_trello_SRT");
+       
+    postTrello(trelloClient, trelloIDList2, message).then((data) => {
+      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+  
+      message.delete().catch();
+     message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+      
+    }).catch((err) => {
+      console.log(`FAILED!: ${err}`);
     });
         }
           }
