@@ -62,6 +62,38 @@ client.on("message", message => {
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
     });
+    }
+      
+    if (message.content.startsWith("FPS")) {
+    	
+      console.log("gatcha!");
+      const postTrello = require("./lib/trello/post_trello_FPS");
+             
+      postTrello(trelloClient, trelloIDList3, message).then((data) => {
+        console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+        
+        message.delete().catch();
+        message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+            
+        }).catch((err) => {
+          console.log(`FAILED!: ${err}`);
+      });
+      }
+
+    if (message.content.startsWith("HSI")) {
+    	
+          console.log("gatcha!");
+          const postTrello = require("./lib/trello/post_trello_HSI");
+             
+          postTrello(trelloClient, trelloIDList4, message).then((data) => {
+            console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+        
+            message.delete().catch();
+           message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+            
+          }).catch((err) => {
+            console.log(`FAILED!: ${err}`);
+          });
         }
     }
                         
