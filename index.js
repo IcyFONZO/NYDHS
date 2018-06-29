@@ -32,18 +32,18 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
     
-    //if (message.content.startsWith("SS")) {
+    if (message.content.startsWith("SS")) {
     	
-    //console.log("gatcha!");
+    console.log("gatcha!");
 
-    //postTrello(trelloClient, trelloIDList, message).then((data) => {
-      //console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+    postTrello(trelloClient, trelloIDList, message).then((data) => {
+      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
   
-      //message.delete().catch();
-      //message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
+      message.delete().catch();
+      message.reply("SUCCESS! Patrol log posted!").then(msg => {msg.delete(9000)})
       
-    //}).catch((err) => {
-      //console.log(`FAILED!: ${err}`);
+    }).catch((err) => {
+      console.log(`FAILED!: ${err}`);
       
     if (message.content.startsWith("SRT")) {
     	
@@ -60,10 +60,9 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
     });
         }
-          }
-            
-        
-             
+       }
+      }
+                        
  });
 
 client.login(discordBotToken);
