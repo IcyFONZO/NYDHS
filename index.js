@@ -26,71 +26,123 @@ const trelloClient = new Trello(trelloKey, trelloToken);
 const postTrello = require("./lib/trello/post_trello_SS");
 
 client.on("ready", message => {
-  console.log("bot is ready, stand by...");
+  console.log(`${client.user.username} is online in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
 });
 
 client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
     
+    //SS
     if (message.content.startsWith("DIVISION: SS")) {
-    	
-    console.log("gatcha!");
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
-      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
-  
+      
+    
+      const dataObject = data;
+      const shortUrl = dataObject.shortUrl;
+      
+
+      let ssEmbed = new discord.RichEmbed()
+      .setColor("#3465ed")
+      .setTitle("Patrol Log Successfully Uploaded!")
+      .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
+      .addField("Link to your log", `${shortUrl}`)
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
+
+
+
+
       message.delete().catch();
-      message.reply("Patrol log successfully uploaded to the Secret Service Patrol Log List.").then(msg => {msg.delete(9000)})
+      message.channel.send(ssEmbed).then(msg => {msg.delete(12000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
   
     });
   }
-      
+    //SRT
     if (message.content.startsWith("DIVISION: SRT")) {
-    	
-    console.log("gatcha!");
+    
     const postTrello = require("./lib/trello/post_trello_SRT");
        
     postTrello(trelloClient, trelloIDList2, message).then((data) => {
-      console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+      const dataObject = data;
+      const shortUrl = dataObject.shortUrl;
+      
+
+      let srtEmbed = new discord.RichEmbed()
+      .setColor("#3465ed")
+      .setTitle("Patrol Log Successfully Uploaded!")
+      .setDescription("Your log was uploaded to the **Special Responce Team** Trello list.")
+      .addField("Link to your log", `${shortUrl}`)
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
   
       message.delete().catch();
-     message.reply("Patrol log successfully uploaded to the Special Responce Team Patrol Log List.").then(msg => {msg.delete(9000)})
+     message.channel.send(srtEmbed).then(msg => {msg.delete(12000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
     });
     }
       
+    //FPS
     if (message.content.startsWith("DIVISION: FPS")) {
     	
-      console.log("gatcha!");
+      
       const postTrello = require("./lib/trello/post_trello_FPS");
              
       postTrello(trelloClient, trelloIDList3, message).then((data) => {
-        console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+      const dataObject = data;
+      const shortUrl = dataObject.shortUrl;
+      
+
+      let fpsEmbed = new discord.RichEmbed()
+      .setColor("#3465ed")
+      .setTitle("Patrol Log Successfully Uploaded!")
+      .setDescription("Your log was uploaded to the **Federal Protection Service** Trello list.")
+      .addField("Link to your log", `${shortUrl}`)
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
         
         message.delete().catch();
-        message.reply("Patrol log successfully uploaded to the Federal Protective Service Patrol Log List.").then(msg => {msg.delete(9000)})
+        message.channel.send(fpsEmbed).then(msg => {msg.delete(12000)})
             
         }).catch((err) => {
           console.log(`FAILED!: ${err}`);
       });
       }
 
+
+      //HSI
     if (message.content.startsWith("DIVISION: HSI")) {
     	
-          console.log("gatcha!");
+          
           const postTrello = require("./lib/trello/post_trello_HSI");
              
           postTrello(trelloClient, trelloIDList4, message).then((data) => {
-            console.log(`SUCCESS!: ${JSON.stringify(data)}`);
-        
+            const dataObject = data;
+            const shortUrl = dataObject.shortUrl;
+            
+      
+            let hsiEmbed = new discord.RichEmbed()
+            .setColor("#3465ed")
+            .setTitle("Patrol Log Successfully Uploaded!")
+            .setDescription("Your log was uploaded to the **Intelligence Office** Trello list.")
+            .addField("Link to your log", `${shortUrl}`)
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+      
+            
+        //Intelligence Office
             message.delete().catch();
-           message.reply("Patrol log successfully uploaded to the Intelligence Office Patrol Log List.").then(msg => {msg.delete(9000)})
+           message.channel.send(hsiEmbed).then(msg => {msg.delete(12000)})
             
           }).catch((err) => {
             console.log(`FAILED!: ${err}`);
@@ -105,10 +157,21 @@ client.on("message", message => {
       const postTrello = require("./lib/trello/post_trello_INACTIVE");
          
       postTrello(trelloClient, trelloIDList5, message).then((data) => {
-        console.log(`SUCCESS!: ${JSON.stringify(data)}`);
+        const dataObject = data;
+        const shortUrl = dataObject.shortUrl;
+        
+  
+        let hEmbed = new discord.RichEmbed()
+        .setColor("#3465ed")
+        .setTitle("Inactivity Notice was Successfully Uploaded!")
+        .setDescription("Your notice was uploaded to the **Inactivity Notice** Trello list.")
+        .addField("Link to your notice", `${shortUrl}`)
+        .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
     
         message.delete().catch();
-       message.reply("Inactivity Notice successfully uploaded to the Inactivity Notice List.").then(msg => {msg.delete(9000)})
+       message.channel.send(hEmbed).then(msg => {msg.delete(12000)})
         
       }).catch((err) => {
         console.log(`FAILED!: ${err}`);
