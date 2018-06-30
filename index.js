@@ -56,6 +56,7 @@ client.on("message", message => {
 
 
       message.delete().catch();
+      message.reply().then(msg => {msg.delete(12000)})
       message.channel.send(ssEmbed).then(msg => {msg.delete(12000)})
       
     }).catch((err) => {
@@ -83,6 +84,7 @@ client.on("message", message => {
       .setTimestamp();
   
       message.delete().catch();
+      message.reply().then(msg => {msg.delete(12000)})
      message.channel.send(srtEmbed).then(msg => {msg.delete(12000)})
       
     }).catch((err) => {
@@ -104,13 +106,14 @@ client.on("message", message => {
       let fpsEmbed = new discord.RichEmbed()
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Federal Protective Service** Trello list.")
+      .setDescription("Your log was uploaded to the **Federal Protection Service** Trello list.")
       .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
         
         message.delete().catch();
+        message.reply().then(msg => {msg.delete(12000)})
         message.channel.send(fpsEmbed).then(msg => {msg.delete(12000)})
             
         }).catch((err) => {
@@ -142,6 +145,7 @@ client.on("message", message => {
             
         //Intelligence Office
             message.delete().catch();
+            message.reply().then(msg => {msg.delete(12000)})
            message.channel.send(hsiEmbed).then(msg => {msg.delete(12000)})
             
           }).catch((err) => {
@@ -171,6 +175,7 @@ client.on("message", message => {
         .setTimestamp();
     
         message.delete().catch();
+        message.reply().then(msg => {msg.delete(12000)})
        message.channel.send(hEmbed).then(msg => {msg.delete(12000)})
         
       }).catch((err) => {
