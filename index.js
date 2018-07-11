@@ -189,7 +189,7 @@ client.on("message", message => {
   if (message.channel.id === discordComplaints) {
 
 
-    if (message.content.startsWith("Name:")) return;
+    if (message.content.startsWith("Username:")) return;
 
     message.delete().catch();
     
