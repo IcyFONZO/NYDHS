@@ -28,6 +28,7 @@ const postTrello = require("./lib/trello/post_trello_SS");
 
 client.on("ready", message => {
   console.log(`${client.user.username} is online in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
+  client.user.setActivity(`${client.users.size}`, {type: "WATCHING"});
 });
 
 client.on("message", message => {
