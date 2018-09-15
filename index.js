@@ -262,7 +262,7 @@ client.on("message", message => {
       
     }
     if (message.content.startsWith("Username:")) return;
-
+    if(message.author.bot) return;
     message.delete().catch();
     
   }
