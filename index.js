@@ -196,7 +196,24 @@ client.on("message", message => {
     }
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
-    if (message.content.startsWith("Name:", "NAME:")) {
+
+    if(isCommand('formatinac', message)){
+      if(message.author.id !== ("236238325306884096")) return;
+
+
+      message.delete().catch();
+
+      let raskj64 = new discord.RichEmbed()
+      .setTitle("Inactivity Notice Format")
+      .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
+      .addField("Division: \nUsername: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", " • The format only has to be in the order provided, capitalization will not affect the logging process.")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+      message.channel.send(raskj64);
+      
+    }
+    if(isCommand('Name:', message)){ 
     	
       console.log("gatcha!");
       const postTrello = require("./lib/trello/post_trello_INACTIVE");
