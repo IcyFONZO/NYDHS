@@ -12,6 +12,7 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
+const prefix = "~";
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
@@ -35,13 +36,15 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
 
-    var command = command.toLowerCase();
-    var content = message.content.toLowerCase();
-    var prefix = "~";
-	  return content.startsWith(prefix + command);
 
     if(isCommand('main', message)){
       if(message.author.id !== ("236238325306884096")) return;
+
+      function isCommand(command, message){
+        var command = command.toLowerCase();
+        var content = message.content.toLowerCase();
+        return content.startsWith(prefix + command);
+      }
 
       message.delete().catch();
 
