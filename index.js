@@ -32,6 +32,13 @@ client.on("ready", message => {
   client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});
 });
 
+
+function isCommand(command, message){
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(prefix + command);
+}
+
 client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
@@ -40,11 +47,6 @@ client.on("message", message => {
     if(isCommand('main', message)){
       if(message.author.id !== ("236238325306884096")) return;
 
-      function isCommand(command, message){
-        var command = command.toLowerCase();
-        var content = message.content.toLowerCase();
-        return content.startsWith(prefix + command);
-      }
 
       message.delete().catch();
 
