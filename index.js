@@ -70,7 +70,7 @@ client.on("message", message => {
       let ssEmbed = new discord.RichEmbed()
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
+      .setDescription("Your log was uploaded to the **Secret Service** Trello list. \n Test")
       .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
