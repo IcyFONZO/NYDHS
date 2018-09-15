@@ -12,7 +12,6 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const prefix = "~";
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
@@ -36,7 +35,7 @@ client.on("ready", message => {
 function isCommand(command, message){
   var command = command.toLowerCase();
   var content = message.content.toLowerCase();
-  return content.startsWith(prefix + command);
+  return content.startsWith(command);
 }
 
 
@@ -59,7 +58,7 @@ client.on("message", message => {
     }
     
     //SS
-    if (message.content.startsWith("DIVISION: SS")) {
+    if(isCommand('DIVISION: SS', message)){ 
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       
