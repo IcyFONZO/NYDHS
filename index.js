@@ -206,7 +206,7 @@ client.on("message", message => {
       let raskj64 = new discord.RichEmbed()
       .setTitle("Inactivity Notice Format")
       .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
-      .addField("Division: \nUsername: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", " • The format only has to be in the order provided, capitalization will not affect the logging process.")
+      .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "Please note: The format only has to be in the order provided, capitalization will not affect the logging process.")
       .setColor("#ccccdd")
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
