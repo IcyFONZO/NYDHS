@@ -42,7 +42,7 @@ function isCommand(command, message){
 
 client.on("message", message => {
   if(message.author.bot) return;
-  // if (message.channel.id === discordChannelID) {
+  if (message.channel.id === discordChannelID) {
 
     if(isCommand('main', message)){
       if(message.author.id !== ("236238325306884096")) return;
@@ -177,7 +177,7 @@ client.on("message", message => {
             console.log(`FAILED!: ${err}`);
           });
         }
-    // }
+    }
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
     if (message.content.startsWith("Name:", "NAME:")) {
