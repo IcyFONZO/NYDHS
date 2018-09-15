@@ -56,6 +56,23 @@ client.on("message", message => {
       message.channel.send(raskj);
       
     }
+
+    if(isCommand('format', message)){
+      if(message.author.id !== ("236238325306884096")) return;
+
+
+      message.delete().catch();
+
+      let raskj6 = new discord.RichEmbed()
+      .setTitle("Patrol Logs Format")
+      .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
+      .addField("Division: \n Username: \n Patrol Screenshot: \n Date: \n Start Time: \n End Time:", "Keep in mind, division abbreviations **MUST** be used. [SS, FPS, SRT, HSI] Links will **ONLY** be accepted for patrol screenshots. The format only has to be in the order provided, capitalization will not affect the logging process.")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+      message.channel.send(raskj6);
+      
+    }
     
     //SS
     if(isCommand('DIVISION: SS', message)){ 
@@ -70,7 +87,7 @@ client.on("message", message => {
       let ssEmbed = new discord.RichEmbed()
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Secret Service** Trello list. \n Test")
+      .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
       .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
