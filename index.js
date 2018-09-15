@@ -64,7 +64,7 @@ client.on("message", message => {
       message.delete().catch();
 
       let raskj6 = new discord.RichEmbed()
-      .setTitle("Patrol Logs Format")
+      .setTitle("Patrol Log Format")
       .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
       .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " • Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n • The format only has to be in the order provided, capitalization will not affect the logging process.")
       .setColor("#ccccdd")
@@ -245,7 +245,22 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordComplaints) {
 
+    if(isCommand('formatcom', message)){
+      if(message.author.id !== ("236238325306884096")) return;
 
+
+      message.delete().catch();
+
+      let raskj654 = new discord.RichEmbed()
+      .setTitle("Complaint Format")
+      .setDescription("The following format **MUST** be followed in-order for your complaint not to be automaticly deleted.")
+      .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+      message.channel.send(raskj654);
+      
+    }
     if (message.content.startsWith("Username:")) return;
 
     message.delete().catch();
