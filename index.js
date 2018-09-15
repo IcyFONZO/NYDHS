@@ -34,6 +34,24 @@ client.on("ready", message => {
 client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordChannelID) {
+
+    var command = command.toLowerCase();
+    var content = message.content.toLowerCase();
+    var prefix = "~";
+	  return content.startsWith(prefix + command);
+
+    if(isCommand('main', message)){
+      if(message.author.id !== ("236238325306884096")) return;
+
+      message.delete().catch();
+
+      let raskj = new discord.RichEmbed()
+      .setImage("https://cdn.discordapp.com/attachments/490607262188961824/490617665040416788/DHS_Under_Maintenance.jpg")
+      .setColor("#ccccdd");
+
+      message.channel.send(raskj);
+      
+    }
     
     //SS
     if (message.content.startsWith("DIVISION: SS")) {
