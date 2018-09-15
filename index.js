@@ -253,7 +253,7 @@ client.on("message", message => {
 
       let raskj654 = new discord.RichEmbed()
       .setTitle("Complaint Format")
-      .setDescription("The following format **MUST** be followed in-order for your complaint not to be automaticly deleted.")
+      .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
       .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
       .setColor("#ccccdd")
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
