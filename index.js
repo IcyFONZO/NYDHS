@@ -106,7 +106,7 @@ client.on("message", message => {
     });
   }
     //SRT
-    if (message.content.startsWith("DIVISION: SRT")) {
+    if(isCommand('DIVISION: SRT', message)){ 
     
     const postTrello = require("./lib/trello/post_trello_SRT");
        
@@ -134,7 +134,7 @@ client.on("message", message => {
     }
       
     //FPS
-    if (message.content.startsWith("DIVISION: FPS")) {
+    if(isCommand('DIVISION: FPS', message)){ 
     	
       
       const postTrello = require("./lib/trello/post_trello_FPS");
@@ -164,7 +164,7 @@ client.on("message", message => {
 
 
       //HSI
-    if (message.content.startsWith("DIVISION: HSI")) {
+      if(isCommand('DIVISION: HSI', message)){ 
     	
           
           const postTrello = require("./lib/trello/post_trello_HSI");
