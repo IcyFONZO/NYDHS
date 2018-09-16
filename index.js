@@ -88,7 +88,7 @@ client.on("message", message => {
       .addField("Special Response Team", "[]")
       .addField("Federal Protective Service", "[]")
       .addField("Homeland Security Investigations", "[]")
-      .setColor("#ccccdd")
+      .setColor("#3465ed")
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
       message.channel.send(raskj56);
