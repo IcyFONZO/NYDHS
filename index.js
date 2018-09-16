@@ -41,7 +41,7 @@ function isCommand(command, message){
 
 client.on("message", message => {
   if(message.author.bot) return;
-  if (message.channel.id === discordChannelID) {
+ 
 
     if(isCommand('main', message)){
       if(message.author.id !== ("236238325306884096")) return;
@@ -73,7 +73,30 @@ client.on("message", message => {
       message.channel.send(raskj6);
       
     }
-    
+
+    if(isCommand('database', message)){
+      if(message.author.id !== ("236238325306884096")) return;
+
+
+      message.delete().catch();
+
+      let raskj56 = new discord.RichEmbed()
+      .setTitle("Department of Homeland Security | Employment Database")
+      .setDescription("All individuals employed under the Department of Homeland Security will appear here.")
+      .addField("Username", "[]", true)
+      .addField("Callsign", "[]", true)
+      .addField("Badge Number", "[]", true)
+      .addField("Strikes", "[U]", true)
+      .addField("Timezone", "[]", true)
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+      message.channel.send(raskj56);
+      
+    }
+
+    if (message.channel.id === discordChannelID) {
+
     //SS
     if(isCommand('DIVISION: SS', message)){ 
 
