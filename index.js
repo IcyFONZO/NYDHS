@@ -83,7 +83,7 @@ client.on("message", message => {
       let raskj56 = new discord.RichEmbed()
       .setTitle("Department of Homeland Security | Employment Database")
       .setDescription("All individuals employed under the Department of Homeland Security will appear here.")
-      .addField("Administration", "Acestrious | Secretary | A1 | 450 \nContrestrious | Deputy Secretary | A2 | N/A \nOPSNIPEZ01 | Assistant Secretary | A3 | N/A")
+      .addField("Administration", "A1 | Acestrious | Secretary \nA2 | Contrestrious | Deputy Secretary \nA3 | OPSNIPEZ01 | Assistant Secretary")
       .addField("Secret Service", "[]")
       .addField("Special Response Team", "[]")
       .addField("Federal Protective Service", "[]")
