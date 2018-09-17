@@ -356,7 +356,7 @@ client.on("message", message => {
 					
 					} else {
 
-						roblox.promote(groupId, id)
+						roblox.demote(groupId, id)
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
