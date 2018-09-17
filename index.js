@@ -341,7 +341,8 @@ client.on("message", message => {
 	}
 	
 	if(isCommand('Demote', message)){
-    if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further				return;
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+				return;
     	var username = args[1]
     	if (username){
 			
@@ -355,11 +356,11 @@ client.on("message", message => {
 					
 					} else {
 
-						roblox.demote(groupId, id)
+						roblox.promote(groupId, id)
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
-							.setTitle(`Success! ${username} has been demoted!`)
+              .setTitle(`Success! ${username} has been demoted!`)
               .setDescription(`**Demotion Notice** \n${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
@@ -367,23 +368,25 @@ client.on("message", message => {
 							.setTimestamp();
 
 						
-						message.channel.send(embedfour);
+            message.channel.send(embedfour);
+            console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
 						}).catch(function(err){
 							message.channel.send("Failed to promote. Please try again!")
 						});
 					}
 				}).catch(function(err){
-					message.channel.send("Couldn't find them! Please try again!.")
+					message.channel.send("Couldn't find them! Please try again!")
 				});
 			}).catch(function(err){ 
-				message.channel.send(`Sorry, but ${username} isn't in the NYFA Group.`)
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
 			});
     	} else {
     		message.channel.send("Oops! I think you forgot to give me the username.")
     	}
     	return;
-	}
+  }
+  
 if(isCommand(`Shout`, message)){
 	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
 	if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
