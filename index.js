@@ -290,7 +290,7 @@ client.on("message", message => {
     var content = message.content.toLowerCase();
     return content.startsWith(prefix + command);
   }
-
+	var args = message.content.split(/[ ]+/)
 
 
   if(isCommand('Promote', message)){
