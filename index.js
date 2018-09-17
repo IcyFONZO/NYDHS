@@ -313,11 +313,11 @@ client.on("message", message => {
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
-              .setTitle(`Success! ${username} has been promoted!`)
-              .setDescription(`**Promotion Notice** \n${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.author.username, message.author.displayAvatarURL)
+							.setFooter(message.member.user.bot.username, message.member.user.bot.displayAvatarURL)
 							.setTimestamp();
 
 						
@@ -360,11 +360,11 @@ client.on("message", message => {
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
-              .setTitle(`Success! ${username} has been demoted!`)
-              .setDescription(`**Demotion Notice** \n${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+              .setTitle(`Demotion Notice`)
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.author.username, message.author.displayAvatarURL)
+							.setFooter(message.member.user.bot.username, message.member.user.bot.displayAvatarURL)
 							.setTimestamp();
 
 						
@@ -399,8 +399,8 @@ roblox.shout(groupId, shoutMSG)
 	.then(function() {
 
 		let embedsix = new discord.RichEmbed()
-		.setTitle(`Success! Shout has been posted!`)
-    .setDescription(`**Group Shout** \n${shoutMSG}`)
+		.setTitle(`Group Shout Notice`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
     .setFooter(message.author.username, message.author.displayAvatarURL)
