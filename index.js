@@ -325,14 +325,14 @@ client.on("message", message => {
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
 						}).catch(function(err){
-							message.channel.send("Failed to promote. Please try again.")
+							message.channel.send("Failed to promote. Please try again!")
 						});
 					}
 				}).catch(function(err){
-					message.channel.send("Couldn't find them! Please try again!.")
+					message.channel.send("Couldn't find them! Please try again!")
 				});
 			}).catch(function(err){ 
-				message.channel.send(`Sorry, but ${username} isn't in the NYFA Group.`)
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
 			});
     	} else {
     		message.channel.send("Oops! I think you forgot to give me the username.")
