@@ -12,6 +12,16 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
+const roblox = require('roblox-js');
+const password = process.env.ROBLOX_PASSWORD
+
+roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
+
+}).catch(() => {console.log("Sorry, it failed.");});
+
+
+
+
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
@@ -74,26 +84,7 @@ client.on("message", message => {
       
     }
 
-    if(isCommand('database', message)){
-      if(message.author.id !== ("236238325306884096")) return;
-
-
-      message.delete().catch();
-
-      let raskj56 = new discord.RichEmbed()
-      .setTitle("Department of Homeland Security | Employment Database")
-      .setDescription("All individuals employed under the Department of Homeland Security will appear here.")
-      .addField("Administration", "A1 | Acestrious | Secretary \nA2 | Contrestrious | Deputy Secretary \nA3 | OPSNIPEZ01 | Assistant Secretary")
-      .addField("Secret Service", "[]")
-      .addField("Special Response Team", "[]")
-      .addField("Federal Protective Service", "[]")
-      .addField("Homeland Security Investigations", "[]")
-      .setColor("#3465ed")
-      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-
-      message.channel.send(raskj56);
-      
-    }
+  
 
     if (message.channel.id === discordChannelID) {
 
@@ -236,7 +227,7 @@ client.on("message", message => {
       message.channel.send(raskj64);
       
     }
-    if(isCommand('Name:', message)){ 
+    if(isCommand('Username:', message)){ 
     	
       console.log("gatcha!");
       const postTrello = require("./lib/trello/post_trello_INACTIVE");
@@ -285,10 +276,154 @@ client.on("message", message => {
       
     }
     if (message.content.startsWith("Username:")) return;
-    if(message.author.bot) return;
+
     message.delete().catch();
     
   }
+
+  var prefix = '.';
+  var groupId = 3632026;
+  var maximumRank = 70;
+
+  function isCommand(command, message){
+    var command = command.toLowerCase();
+    var content = message.content.toLowerCase();
+    return content.startsWith(prefix + command);
+  }
+
+
+
+  if(isCommand('Promote', message)){
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+				return;
+    	var username = args[1]
+    	if (username){
+			
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
+
+						message.reply("Oops! Seems like I can't do that!")
+					
+					} else {
+
+						roblox.promote(groupId, id)
+						.then(function(roles){
+
+							let embedfour = new discord.RichEmbed()
+              .setTitle(`Success! ${username} has been promoted!`)
+              .setDescription(`**Promotion Notice** \n${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter(message.author.username, message.author.displayAvatarURL)
+							.setTimestamp();
+
+						
+            message.channel.send(embedfour);
+            console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again.")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!.")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYFA Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+	}
+	
+	if(isCommand('Demote', message)){
+    if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further				return;
+    	var username = args[1]
+    	if (username){
+			
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
+
+						message.reply("Oops! Seems like I can't do that!")
+					
+					} else {
+
+						roblox.demote(groupId, id)
+						.then(function(roles){
+
+							let embedfour = new discord.RichEmbed()
+							.setTitle(`Success! ${username} has been demoted!`)
+              .setDescription(`**Demotion Notice** \n${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter(message.author.username, message.author.displayAvatarURL)
+							.setTimestamp();
+
+						
+						message.channel.send(embedfour);
+
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again!")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!.")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYFA Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+	}
+if(isCommand(`Shout`, message)){
+	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
+	if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
+	return;
+	message.reply('Please specify a message to shout.')
+}
+const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
+
+roblox.shout(groupId, shoutMSG)
+	.then(function() {
+
+		let embedsix = new discord.RichEmbed()
+		.setTitle(`Success! Shout has been posted!`)
+    .setDescription(`**Group Shout** \n${shoutMSG}`)
+    .setColor("#3465ed")
+    .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    .setFooter(message.author.username, message.author.displayAvatarURL)
+    .setTimestamp();
+
+		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
+		// message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
+	})
+	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
+		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
+	});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         
  });
