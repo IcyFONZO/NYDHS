@@ -89,7 +89,7 @@ client.on("message", message => {
     if (message.channel.id === discordChannelID) {
 
     //SS
-    if(isCommand('DIVISION: SS', message)){ 
+    if(isCommand('Division: SS', message)){ 
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       
@@ -120,7 +120,7 @@ client.on("message", message => {
     });
   }
     //SRT
-    if(isCommand('DIVISION: SRT', message)){ 
+    if(isCommand('Division:: SRT', message)){ 
     
     const postTrello = require("./lib/trello/post_trello_SRT");
        
@@ -148,7 +148,7 @@ client.on("message", message => {
     }
       
     //FPS
-    if(isCommand('DIVISION: FPS', message)){ 
+    if(isCommand('Division: FPS', message)){ 
     	
       
       const postTrello = require("./lib/trello/post_trello_FPS");
@@ -178,7 +178,7 @@ client.on("message", message => {
 
 
       //HSI
-      if(isCommand('DIVISION: HSI', message)){ 
+      if(isCommand('Division: HSI', message)){ 
     	
           
           const postTrello = require("./lib/trello/post_trello_HSI");
@@ -317,7 +317,7 @@ client.on("message", message => {
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.member.user.bot.username, message.member.user.bot.displayAvatarURL)
+							.setFooter(message.bot.username, message.bot.displayAvatarURL)
 							.setTimestamp();
 
 						
@@ -364,7 +364,7 @@ client.on("message", message => {
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.member.user.bot.username, message.member.user.bot.displayAvatarURL)
+							.setFooter(message.bot.username, message.bot.displayAvatarURL)
 							.setTimestamp();
 
 						
