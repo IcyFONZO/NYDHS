@@ -285,11 +285,7 @@ client.on("message", message => {
   var groupId = 3632026;
   var maximumRank = 70;
 
-  function isCommand(command, message){
-    var command = command.toLowerCase();
-    var content = message.content.toLowerCase();
-    return content.startsWith(prefix + command);
-  }
+ 
 	var args = message.content.split(/[ ]+/)
 
 
