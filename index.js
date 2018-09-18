@@ -12,6 +12,7 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
+const trelloIDList6 = process.env.TRELLO_ID_THING;
 const roblox = require('roblox-js');
 const password = process.env.ROBLOX_PASSWORD
 
@@ -285,11 +286,18 @@ client.on("message", message => {
   var groupId = 3632026;
   var maximumRank = 70;
 
+  
+function isCommand2(command, message){
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(prefix + command);
+}
+
  
 	var args = message.content.split(/[ ]+/)
 
-  if(message.content.startsWith(prefix)) {
-  if(isCommand('Promote', message)){
+  
+  if(isCommand2('Promote', message)){
 		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
 				return;
     	var username = args[1]
@@ -320,6 +328,16 @@ client.on("message", message => {
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
+            const postTrello = require("./lib/trello/post_trello_ROBLOX");
+             
+            postTrello(trelloClient, trelloIDList6, message).then((data) => {
+    
+    
+            
+             }).catch((err) => {
+                console.log(`FAILED!: ${err}`);
+              });
+
 						}).catch(function(err){
 							message.channel.send("Failed to promote. Please try again!")
 						});
@@ -336,7 +354,7 @@ client.on("message", message => {
     	return;
 	}
 	
-	if(isCommand('Demote', message)){
+	if(isCommand2('Demote', message)){
 		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
 				return;
     	var username = args[1]
@@ -383,7 +401,7 @@ client.on("message", message => {
     	return;
   }
   
-if(isCommand(`Shout`, message)){
+if(isCommand2(`Shout`, message)){
 	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
 	if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
 	return;
@@ -410,8 +428,7 @@ roblox.shout(groupId, shoutMSG)
 	});
 }
 
-  }
-
+  
 
 
 
