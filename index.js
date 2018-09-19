@@ -77,7 +77,7 @@ client.on("message", message => {
       let raskj6 = new discord.RichEmbed()
       .setTitle("Patrol Log Format")
       .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
-      .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " • Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n • The format only has to be in the order provided, capitalization will not affect the logging process.")
+      .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", "**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST \n• Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n • The format only has to be in the order provided, capitalization will not affect the logging process.")
       .setColor("#ccccdd")
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
@@ -121,7 +121,7 @@ client.on("message", message => {
     });
   }
     //SRT
-    if(isCommand('Division: SRT', message)){ 
+    if(isCommand('Division:: SRT', message)){ 
     
     const postTrello = require("./lib/trello/post_trello_SRT");
        
