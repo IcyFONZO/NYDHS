@@ -121,7 +121,7 @@ client.on("message", message => {
     });
   }
     //SRT
-    if(isCommand('Division:: SRT', message)){ 
+    if(isCommand('Division: SRT', message)){ 
     
     const postTrello = require("./lib/trello/post_trello_SRT");
        
