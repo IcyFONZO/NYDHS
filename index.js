@@ -323,7 +323,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.bot.username, message.bot.displayAvatarURL)
+							.setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
 							.setTimestamp();
 
 						
@@ -372,7 +372,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(message.bot.username, message.bot.displayAvatarURL)
+							.setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
 							.setTimestamp();
 
 						
@@ -413,7 +413,7 @@ roblox.shout(groupId, shoutMSG)
     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter(message.author.username, message.author.displayAvatarURL)
+    .setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
