@@ -298,10 +298,10 @@ function isCommand2(command, message){
 
   
   if(isCommand2('Promote', message)){
-		// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-        // return;
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+        return;
         
-        if(message.author.id !== ("236238325306884096")) return;
+        // if(message.author.id !== ("236238325306884096")) return;
     	var username = args[1]
     	if (username){
 			
@@ -323,12 +323,21 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
+							.setFooter("All promotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+
+            const postTrello = require("./lib/trello/post_trello_ROBLOX");
+
+            postTrello(trelloClient, trelloIDList6, message).then((data) => {
+              
+            }).catch((err) => {
+              console.log(`FAILED!: ${err}`);
+            });
+
 
            
 						}).catch(function(err){
@@ -348,9 +357,9 @@ function isCommand2(command, message){
 	}
 	
 	if(isCommand2('Demote', message)){
-		// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-    // 		return;
-    if(message.author.id !== ("236238325306884096")) return;
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+    		return;
+    // if(message.author.id !== ("236238325306884096")) return;
     	var username = args[1]
     	if (username){
 			
@@ -372,7 +381,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
+							.setFooter("All demotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
@@ -396,8 +405,8 @@ function isCommand2(command, message){
   }
   
 if(isCommand2(`Shout`, message)){
-  if(message.author.id !== ("236238325306884096")) return;
-	// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
+  // if(message.author.id !== ("236238325306884096")) return;
+	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
   if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
   message.reply('Please specify a message to shout.')
   return;
@@ -413,7 +422,7 @@ roblox.shout(groupId, shoutMSG)
     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter("Department of Homeland Security | Department of Homeland Security  | Department of Homeland Security")
+    .setFooter("All group shouts via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
