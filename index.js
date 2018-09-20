@@ -282,151 +282,147 @@ client.on("message", message => {
     
   }
 
-//   var prefix = '.';
-//   var groupId = 3632026;
-//   var maximumRank = 70;
+  var prefix = '.';
+  var groupId = 3632026;
+  var maximumRank = 70;
 
   
-// function isCommand2(command, message){
-//   var command = command.toLowerCase();
-//   var content = message.content.toLowerCase();
-//   return content.startsWith(prefix + command);
-// }
+function isCommand2(command, message){
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(prefix + command);
+}
 
  
-// 	var args = message.content.split(/[ ]+/)
+	var args = message.content.split(/[ ]+/)
 
   
-//   if(isCommand2('Promote', message)){
-// 		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-// 				return;
-//     	var username = args[1]
-//     	if (username){
+  if(isCommand2('Promote', message)){
+		// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+        // return;
+        
+        if(message.author.id !== ("236238325306884096")) return;
+    	var username = args[1]
+    	if (username){
 			
-//     		roblox.getIdFromUsername(username)
-// 			.then(function(id){
-// 				roblox.getRankInGroup(groupId, id)
-// 				.then(function(rank){
-// 					if(maximumRank <= rank){
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
 
-// 						message.reply("Oops! Seems like I can't do that!")
+						message.reply("Oops! Seems like I can't do that!")
 					
-// 					} else {
+					} else {
 
-// 						roblox.promote(groupId, id)
-// 						.then(function(roles){
+						roblox.promote(groupId, id)
+						.then(function(roles){
 
-// 							let embedfour = new discord.RichEmbed()
-//               .setTitle(`Promotion Notice`)
-//               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
-// 							.setColor("#3465ed")
-//               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-// 							.setFooter(message.bot.username, message.bot.displayAvatarURL)
-// 							.setTimestamp();
+							let embedfour = new discord.RichEmbed()
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter(message.bot.username, message.bot.displayAvatarURL)
+							.setTimestamp();
 
 						
-//             message.channel.send(embedfour);
-//             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+            message.channel.send(embedfour);
+            console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-//             const postTrello = require("./lib/trello/post_trello_ROBLOX");
-             
-//             postTrello(trelloClient, trelloIDList6, message).then((data) => {
-    
-    
-            
-//              }).catch((err) => {
-//                 console.log(`FAILED!: ${err}`);
-//               });
-
-// 						}).catch(function(err){
-// 							message.channel.send("Failed to promote. Please try again!")
-// 						});
-// 					}
-// 				}).catch(function(err){
-// 					message.channel.send("Couldn't find them! Please try again!")
-// 				});
-// 			}).catch(function(err){ 
-// 				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
-// 			});
-//     	} else {
-//     		message.channel.send("Oops! I think you forgot to give me the username.")
-//     	}
-//     	return;
-// 	}
+           
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again!")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+	}
 	
-// 	if(isCommand2('Demote', message)){
-// 		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-// 				return;
-//     	var username = args[1]
-//     	if (username){
+	if(isCommand2('Demote', message)){
+		// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+    // 		return;
+    if(message.author.id !== ("236238325306884096")) return;
+    	var username = args[1]
+    	if (username){
 			
-//     		roblox.getIdFromUsername(username)
-// 			.then(function(id){
-// 				roblox.getRankInGroup(groupId, id)
-// 				.then(function(rank){
-// 					if(maximumRank <= rank){
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
 
-// 						message.reply("Oops! Seems like I can't do that!")
+						message.reply("Oops! Seems like I can't do that!")
 					
-// 					} else {
+					} else {
 
-// 						roblox.demote(groupId, id)
-// 						.then(function(roles){
+						roblox.demote(groupId, id)
+						.then(function(roles){
 
-// 							let embedfour = new discord.RichEmbed()
-//               .setTitle(`Demotion Notice`)
-//               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
-// 							.setColor("#3465ed")
-//               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-// 							.setFooter(message.bot.username, message.bot.displayAvatarURL)
-// 							.setTimestamp();
+							let embedfour = new discord.RichEmbed()
+              .setTitle(`Demotion Notice`)
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter(message.bot.username, message.bot.displayAvatarURL)
+							.setTimestamp();
 
 						
-//             message.channel.send(embedfour);
-//             console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+            message.channel.send(embedfour);
+            console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-// 						}).catch(function(err){
-// 							message.channel.send("Failed to promote. Please try again!")
-// 						});
-// 					}
-// 				}).catch(function(err){
-// 					message.channel.send("Couldn't find them! Please try again!")
-// 				});
-// 			}).catch(function(err){ 
-// 				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
-// 			});
-//     	} else {
-//     		message.channel.send("Oops! I think you forgot to give me the username.")
-//     	}
-//     	return;
-//   }
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again!")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+  }
   
-// if(isCommand2(`Shout`, message)){
-// 	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
-// 	if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
-// 	return;
-// 	message.reply('Please specify a message to shout.')
-// }
-// const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
+if(isCommand2(`Shout`, message)){
+  if(message.author.id !== ("236238325306884096")) return;
+	// if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
+  if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
+  message.reply('Please specify a message to shout.')
+  return;
+  
+}
+const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
 
-// roblox.shout(groupId, shoutMSG)
-// 	.then(function() {
+roblox.shout(groupId, shoutMSG)
+	.then(function() {
 
-// 		let embedsix = new discord.RichEmbed()
-// 		.setTitle(`Group Shout Notice`)
-//     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
-//     .setColor("#3465ed")
-//     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-//     .setFooter(message.author.username, message.author.displayAvatarURL)
-//     .setTimestamp();
+		let embedsix = new discord.RichEmbed()
+		.setTitle(`Group Shout Notice`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
+    .setColor("#3465ed")
+    .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    .setFooter(message.author.username, message.author.displayAvatarURL)
+    .setTimestamp();
 
-// 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
-// 		// message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
-// 	})
-// 	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
-// 		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
-// 	});
-// }
+		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
+		// message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
+	})
+	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
+		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
+	});
+}
 
   
 
