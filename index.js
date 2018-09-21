@@ -437,6 +437,69 @@ roblox.shout(groupId, shoutMSG)
 	});
 }
 
+if(isCommand2('Suspend', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      // if(message.author.id !== ("236238325306884096")) return;
+    var username = args[1]
+    if (username){
+    
+      roblox.getIdFromUsername(username)
+    .then(function(id){
+      roblox.getRankInGroup(groupId, id)
+      .then(function(rank){
+        if(maximumRank <= rank){
+
+          message.reply("Oops! Seems like I can't do that!")
+        
+        } else {
+          let roleset= 10;
+
+          roblox.setRank(groupId, id, roleset)
+          .then(function(roles){
+
+            let embedfour = new discord.RichEmbed()
+            .setTitle(`Suspension Notice`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          
+          message.channel.send(embedfour);
+        
+
+          const postTrello = require("./lib/trello/post_trello_ROBLOX");
+
+          postTrello(trelloClient, trelloIDList6, message).then((data) => {
+            const dataObject = data;
+            const shortUrl = dataObject.shortUrl;
+      
+
+          console.log(shortUrl)
+          }).catch((err) => {
+            console.log(`FAILED!: ${err}`);
+          });
+
+
+         
+          }).catch(function(err){
+            message.channel.send("Failed to promote. Please try again!")
+          });
+        }
+      }).catch(function(err){
+        message.channel.send("Couldn't find them! Please try again!")
+      });
+    }).catch(function(err){ 
+      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+    });
+    } else {
+      message.channel.send("Oops! I think you forgot to give me the username.")
+    }
+    return;
+}
   
 
 
