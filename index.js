@@ -24,7 +24,7 @@ roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
 
 
 
-[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
+[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5, trelloIDList6].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
@@ -333,7 +333,11 @@ function isCommand2(command, message){
             const postTrello = require("./lib/trello/post_trello_ROBLOX");
 
             postTrello(trelloClient, trelloIDList6, message).then((data) => {
-              
+              const dataObject = data;
+              const shortUrl = dataObject.shortUrl;
+        
+  
+            console.log(shortUrl)
             }).catch((err) => {
               console.log(`FAILED!: ${err}`);
             });
