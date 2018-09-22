@@ -518,9 +518,9 @@ if(isCommand2('Rank', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-          let roleset= args[2];
+          const roleset3= args[2];
 
-          roblox.setRank(groupId, id, roleset)
+          roblox.setRank(groupId, id, roleset3)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
