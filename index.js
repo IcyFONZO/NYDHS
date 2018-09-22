@@ -329,8 +329,7 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-              client.channels.get("492896872726396928").then(embedfour);
-           
+              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfour);
 
            
 						}).catch(function(err){
@@ -381,7 +380,7 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-            client.channels.get("492896892448145420").then(embedfour);
+            client.guilds.get("275080442560905216").channels.get("492896892448145420").send(embedfour);
 
 						}).catch(function(err){
 							message.channel.send("Failed to promote. Please try again!")
@@ -422,8 +421,10 @@ roblox.shout(groupId, shoutMSG)
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
     // message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
+
+    client.guilds.get("275080442560905216").channels.get("492896970680303620").send(embedsix);
     
-    client.channels.get("492896970680303620").then(embedsix);
+    
 	})
 	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
 		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
@@ -462,8 +463,9 @@ if(isCommand2('Suspend', message)){
 
           
           message.channel.send(embedfour);
-        
-          client.channels.get("492897084672835584").then(embedfour);
+
+          client.guilds.get("275080442560905216").channels.get("492897084672835584").send(embedfour);
+      
 
          
           }).catch(function(err){
@@ -515,8 +517,10 @@ if(isCommand2('Rank', message)){
 
           
           message.channel.send(embedfour);
+
+          client.guilds.get("275080442560905216").channels.get("492897029035655175").send(embedfour);
       
-          client.channels.get("492897029035655175").then(embedfour);
+         
 
          
           }).catch(function(err){
