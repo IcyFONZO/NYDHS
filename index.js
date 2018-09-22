@@ -507,6 +507,7 @@ if(isCommand2('Rank', message)){
       
       // if(message.author.id !== ("236238325306884096")) return;
     var username = args[1]
+    var name = args[2]
     if (username){
     
       roblox.getIdFromUsername(username)
@@ -518,9 +519,9 @@ if(isCommand2('Rank', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-          const roleset3= args[2];
+          
 
-          roblox.setRank(groupId, id, roleset3)
+          roblox.setRank(groupId, id, name)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
