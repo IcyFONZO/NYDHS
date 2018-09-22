@@ -520,7 +520,7 @@ if(isCommand2('Suspend', message)){
         } else {
           let roleset = args[2];
 
-          roblox.changeRank(groupId, id, roleset)
+          roblox.setRank(groupId, id, roleset)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
