@@ -518,17 +518,17 @@ if(isCommand2('Suspend', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-          let roleset = args[2];
+          let name = args[2];
 
-          roblox.setRank(groupId, id, roleset)
+          roblox.setRank(groupId, id, name)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
-            .setTitle(`Suspension Notice`)
+            .setTitle(`Promotion Notice Notice`)
             .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("All promotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
