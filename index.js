@@ -67,22 +67,22 @@ client.on("message", message => {
       
     }
 
-    if(isCommand('format', message)){
-      if(message.author.id !== ("236238325306884096")) return;
+//     if(isCommand('format', message)){
+//       if(message.author.id !== ("236238325306884096")) return;
 
 
-      message.delete().catch();
-//**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST
-      let raskj6 = new discord.RichEmbed()
-      .setTitle("Patrol Log Format")
-      .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
-      .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " \n**Patrol Log Example** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST \n**About NYDHS Discord Bot**\n• Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n• If you do not receive a confirmation message, that means your log was **NOT** uploaded to the Trello and you need to try again and make sure you are using the correct format. \n • The format **ONLY** has to be in the order provided, capitalization will not affect the logging process.")
-      .setColor("#ccccdd")
-      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+//       message.delete().catch();
+// //**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST
+//       let raskj6 = new discord.RichEmbed()
+//       .setTitle("Patrol Log Format")
+//       .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
+//       .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " \n**Patrol Log Example** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST \n**About NYDHS Discord Bot**\n• Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n• If you do not receive a confirmation message, that means your log was **NOT** uploaded to the Trello and you need to try again and make sure you are using the correct format. \n • The format **ONLY** has to be in the order provided, capitalization will not affect the logging process.")
+//       .setColor("#ccccdd")
+//       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
-      message.channel.send(raskj6);
+//       message.channel.send(raskj6);
       
-    }
+//     }
 
   
 
@@ -132,7 +132,7 @@ client.on("message", message => {
       let srtEmbed = new discord.RichEmbed()
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Special Responce Team** Trello list.")
+      .setDescription("Your log was uploaded to the **Special Response Team** Trello list.")
       .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
@@ -211,22 +211,22 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
 
-    if(isCommand('formatinac', message)){
-      if(message.author.id !== ("236238325306884096")) return;
+    // if(isCommand('formatinac', message)){
+    //   if(message.author.id !== ("236238325306884096")) return;
 
 
-      message.delete().catch();
+    //   message.delete().catch();
 
-      let raskj64 = new discord.RichEmbed()
-      .setTitle("Inactivity Notice Format")
-      .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
-      .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
-      .setColor("#ccccdd")
-      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    //   let raskj64 = new discord.RichEmbed()
+    //   .setTitle("Inactivity Notice Format")
+    //   .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
+    //   .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
+    //   .setColor("#ccccdd")
+    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
-      message.channel.send(raskj64);
+    //   message.channel.send(raskj64);
       
-    }
+    // }
     if(isCommand('Username:', message)){ 
     	
       console.log("gatcha!");
@@ -259,22 +259,22 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordComplaints) {
 
-    if(isCommand('formatcom', message)){
-      if(message.author.id !== ("236238325306884096")) return;
+    // if(isCommand('formatcom', message)){
+    //   if(message.author.id !== ("236238325306884096")) return;
 
 
-      message.delete().catch();
+    //   message.delete().catch();
 
-      let raskj654 = new discord.RichEmbed()
-      .setTitle("Complaint Format")
-      .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
-      .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** All Complaints are reviewed thoroughly by the Homeland Security Investigations Department.")
-      .setColor("#ccccdd")
-      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    //   let raskj654 = new discord.RichEmbed()
+    //   .setTitle("Complaint Format")
+    //   .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
+    //   .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** All Complaints are reviewed thoroughly by the Homeland Security Investigations Department.")
+    //   .setColor("#ccccdd")
+    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
-      message.channel.send(raskj654);
+    //   message.channel.send(raskj654);
       
-    }
+    // }
     if (message.content.startsWith("Username:")) return;
 
     message.delete().catch();
@@ -283,7 +283,7 @@ client.on("message", message => {
 
   var prefix = '.';
   var groupId = 3632026;
-  var maximumRank = 70;
+  var maximumRank = 85;
 
   
 function isCommand2(command, message){
@@ -297,7 +297,7 @@ function isCommand2(command, message){
 
   
   if(isCommand2('Promote', message)){
-		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
         return;
         
         // if(message.author.id !== ("236238325306884096")) return;
@@ -310,7 +310,7 @@ function isCommand2(command, message){
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply("Oops! Seems like I can't do that!")
+						message.reply("Oops! Seems like that rank is to high!")
 					
 					} else {
 
@@ -329,7 +329,15 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfour);
+            let embedfourB = new discord.RichEmbed()
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
+
+              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourB);
 
            
 						}).catch(function(err){
@@ -349,9 +357,10 @@ function isCommand2(command, message){
 	}
 	
 	if(isCommand2('Demote', message)){
-		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-    		return;
-    // if(message.author.id !== ("236238325306884096")) return;
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+        return;
+        
+        // if(message.author.id !== ("236238325306884096")) return;
     	var username = args[1]
     	if (username){
 			
@@ -361,14 +370,14 @@ function isCommand2(command, message){
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply("Oops! Seems like I can't do that!")
+						message.reply("Oops! Seems like that rank is to high!")
 					
 					} else {
 
 						roblox.demote(groupId, id)
 						.then(function(roles){
 
-							let embedfour = new discord.RichEmbed()
+							let embedfo2ur = new discord.RichEmbed()
               .setTitle(`Demotion Notice`)
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
@@ -377,11 +386,20 @@ function isCommand2(command, message){
 							.setTimestamp();
 
 						
-            message.channel.send(embedfour);
+            message.channel.send(embedfo2ur);
             console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-            client.guilds.get("275080442560905216").channels.get("492896892448145420").send(embedfour);
+            let embedfourBA = new discord.RichEmbed()
+              .setTitle(`Demotion Notice`)
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
 
+              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourBA);
+
+           
 						}).catch(function(err){
 							message.channel.send("Failed to promote. Please try again!")
 						});
@@ -396,11 +414,12 @@ function isCommand2(command, message){
     		message.channel.send("Oops! I think you forgot to give me the username.")
     	}
     	return;
-  }
-  
+	}
+
+
 if(isCommand2(`Shout`, message)){
   // if(message.author.id !== ("236238325306884096")) return;
-	if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further		return;
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
   if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
   message.reply('Please specify a message to shout.')
   return;
@@ -422,7 +441,16 @@ roblox.shout(groupId, shoutMSG)
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
     // message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
 
-    client.guilds.get("275080442560905216").channels.get("492896970680303620").send(embedsix);
+
+    let embedsix1 = new discord.RichEmbed()
+		.setTitle(`Group Shout Notice`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n${message.channel.guild.name}`)
+    .setColor("#3465ed")
+    .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+    .setTimestamp();
+
+    client.guilds.get("275080442560905216").channels.get("492896970680303620").send(embedsix1);
     
     
 	})
@@ -432,7 +460,7 @@ roblox.shout(groupId, shoutMSG)
 }
 
 if(isCommand2('Suspend', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
       // if(message.author.id !== ("236238325306884096")) return;
@@ -445,7 +473,7 @@ if(isCommand2('Suspend', message)){
       .then(function(rank){
         if(maximumRank <= rank){
 
-          message.reply("Oops! Seems like I can't do that!")
+          message.reply("Oops! Seems like that rank is to high!")
         
         } else {
           let roleset= 10;
@@ -453,7 +481,7 @@ if(isCommand2('Suspend', message)){
           roblox.setRank(groupId, id, roleset)
           .then(function(roles){
 
-            let embedfour = new discord.RichEmbed()
+            let embedfou2r = new discord.RichEmbed()
             .setTitle(`Suspension Notice`)
             .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
             .setColor("#3465ed")
@@ -462,9 +490,19 @@ if(isCommand2('Suspend', message)){
             .setTimestamp();
 
           
-          message.channel.send(embedfour);
+          message.channel.send(embedfou2r);
 
-          client.guilds.get("275080442560905216").channels.get("492897084672835584").send(embedfour);
+
+          let embedfou23r = new discord.RichEmbed()
+            .setTitle(`Suspension Notice`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n- \n${message.channel.guild.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+
+          client.guilds.get("275080442560905216").channels.get("492897084672835584").send(embedfou23r);
       
 
          
@@ -485,7 +523,7 @@ if(isCommand2('Suspend', message)){
 }
   
 if(isCommand2('Rank', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
       // if(message.author.id !== ("236238325306884096")) return;
@@ -507,18 +545,26 @@ if(isCommand2('Rank', message)){
           roblox.setRank(groupId, id, name)
           .then(function(roles){
 
-            let embedfour = new discord.RichEmbed()
+            let embedfour7 = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole} to ${roles.newRole}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
-          message.channel.send(embedfour);
+          message.channel.send(embedfour7);
 
-          client.guilds.get("275080442560905216").channels.get("492897029035655175").send(embedfour);
+          let embedfour72 = new discord.RichEmbed()
+            .setTitle(`Promotion Notice`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}! \n- \n${message.channel.guild.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          client.guilds.get("275080442560905216").channels.get("492897029035655175").send(embedfour72);
       
          
 
@@ -540,7 +586,7 @@ if(isCommand2('Rank', message)){
 }
 
 if(isCommand('rankhelp', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
 
       
@@ -548,7 +594,7 @@ if(isCommand('rankhelp', message)){
       let embedfour1 = new discord.RichEmbed()
             .setTitle(`Help Menu: Rank Command`)
             .setDescription("The following are the numerical codes for each rank.")
-            .addField("Special Responce Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
+            .addField("Lieutenant - 85 \nSergeant - 80 \nCorporal - 75 \nSpecial Response Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
