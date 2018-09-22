@@ -323,7 +323,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All promotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
@@ -385,7 +385,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All demotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
@@ -426,7 +426,7 @@ roblox.shout(groupId, shoutMSG)
     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter("All group shouts via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
@@ -464,7 +464,7 @@ if(isCommand2('Suspend', message)){
             .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -526,10 +526,10 @@ if(isCommand2('Rank', message)){
 
             let embedfour = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}from ${roles.oldRole} to ${roles.newRole}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole} to ${roles.newRole}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -564,6 +564,24 @@ if(isCommand2('Rank', message)){
       message.channel.send("Oops! I think you forgot to give me the username.")
     }
     return;
+}
+
+if(isCommand2('rankhelp', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      let embedfour1 = new discord.RichEmbed()
+            .setTitle(`Help Menu: Rank Command`)
+            .setDescription("The following are the numerical codes for each rank.")
+            .addField("Special Responce Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "In order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          
+          message.channel.send(embedfour1);
+     
 }
   
   
