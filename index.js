@@ -12,7 +12,6 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const trelloIDList6 = process.env.TRELLO_ID_THING;
 const roblox = require('roblox-js');
 const password = process.env.ROBLOX_PASSWORD
 
@@ -24,7 +23,7 @@ roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
 
 
 
-[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5, trelloIDList6].forEach(i => {
+[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
@@ -330,25 +329,8 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-
-            module.exports = (trelloClient, trelloIDList6, message) => {
-              const userName = message.member.nickname;
-              const content = (`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
-              const title = `${userName}`;
-              const desc = `${content}`;
-              console.log(`Send Trello: ${title}`);
-              return new Promise((resolve, reject) => {
-                trelloClient.post("/1/cards", {idList: trelloIDList6, name: title, desc: desc}, (err, data) => {
-                  if (err) {
-                    return reject(err);
-                  } else {
-                    return resolve(data);
-                  }
-                });
-              });
-            };
-            
-
+              client.channels.get("492896872726396928").then(embedfour);
+           
 
            
 						}).catch(function(err){
@@ -399,6 +381,8 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
+            client.channels.get("492896892448145420").then(embedfour);
+
 						}).catch(function(err){
 							message.channel.send("Failed to promote. Please try again!")
 						});
@@ -437,7 +421,9 @@ roblox.shout(groupId, shoutMSG)
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
-		// message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
+    // message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
+    
+    client.channels.get("492896970680303620").then(embedsix);
 	})
 	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
 		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
@@ -477,19 +463,7 @@ if(isCommand2('Suspend', message)){
           
           message.channel.send(embedfour);
         
-
-          const postTrello = require("./lib/trello/post_trello_ROBLOX");
-
-          postTrello(trelloClient, trelloIDList6, message).then((data) => {
-            const dataObject = data;
-            const shortUrl = dataObject.shortUrl;
-      
-
-          console.log(shortUrl)
-          }).catch((err) => {
-            console.log(`FAILED!: ${err}`);
-          });
-
+          client.channels.get("492897084672835584").then(embedfour);
 
          
           }).catch(function(err){
@@ -541,20 +515,8 @@ if(isCommand2('Rank', message)){
 
           
           message.channel.send(embedfour);
-        
-
-          const postTrello = require("./lib/trello/post_trello_ROBLOX");
-
-          postTrello(trelloClient, trelloIDList6, message).then((data) => {
-            const dataObject = data;
-            const shortUrl = dataObject.shortUrl;
       
-
-          console.log(shortUrl)
-          }).catch((err) => {
-            console.log(`FAILED!: ${err}`);
-          });
-
+          client.channels.get("492897029035655175").then(embedfour);
 
          
           }).catch(function(err){
