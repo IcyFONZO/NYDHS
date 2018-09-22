@@ -507,7 +507,7 @@ if(isCommand2('Rank', message)){
       
       // if(message.author.id !== ("236238325306884096")) return;
     var username = args[1]
-    var name = args[2]
+    var name = parseInt(args[2])
     if (username){
     
       roblox.getIdFromUsername(username)
