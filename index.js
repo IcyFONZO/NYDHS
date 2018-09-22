@@ -566,7 +566,7 @@ if(isCommand2('Rank', message)){
     return;
 }
 
-if(isCommand2('rankhelp', message)){
+if(isCommand('rankhelp', message)){
   if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
@@ -578,6 +578,12 @@ if(isCommand2('rankhelp', message)){
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
+
+            try{
+              await message.author.send(embedfour1)
+            }catch(e){
+              message.channel.send(embedfour1).then(msg => {msg.delete(9000)});
+            }
 
           
           message.channel.send(embedfour1);
