@@ -580,7 +580,7 @@ if(isCommand('rankhelp', message)){
             .setTimestamp();
 
             try{
-              await message.author.send(embedfour1)
+              message.author.send(embedfour1)
             }catch(e){
               message.channel.send(embedfour1).then(msg => {msg.delete(9000)});
             }
