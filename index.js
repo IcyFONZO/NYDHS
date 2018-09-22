@@ -526,7 +526,7 @@ if(isCommand2('Rank', message)){
 
             let embedfour = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username}from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
