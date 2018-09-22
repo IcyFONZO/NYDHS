@@ -580,14 +580,9 @@ if(isCommand('rankhelp', message)){
             .setTimestamp();
 
             
-            message.author.send(embedfour1).then
-            if (err) {
-              message.channel.send(embedfour1).then(msg => {msg.delete[9000]});
-            }
-            
+            message.channel.send(embedfour1).then(msg => {msg.delete[9000]});
 
           
-          message.channel.send(embedfour1);
      
 }
   
