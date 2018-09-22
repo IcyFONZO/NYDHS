@@ -501,7 +501,7 @@ if(isCommand2('Suspend', message)){
     return;
 }
   
-  if(isCommand2('rank', message)){
+if(isCommand2('Rank', message)){
   if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
@@ -518,19 +518,17 @@ if(isCommand2('Suspend', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-
-          
-          let roleset = args.join(" ");
+          let roleset= args[2];
 
           roblox.setRank(groupId, id, roleset)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.name} to ${roles.newRole.name}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All promotions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("All suspensions via the bot are being monitored and recorded in a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -566,7 +564,8 @@ if(isCommand2('Suspend', message)){
     }
     return;
 }
-
+  
+  
 
 
 
