@@ -330,17 +330,24 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-            const postTrello = require("./lib/trello/post_trello_ROBLOX");
 
-            postTrello(trelloClient, trelloIDList6, message).then((data) => {
-              const dataObject = data;
-              const shortUrl = dataObject.shortUrl;
-        
-  
-            console.log(shortUrl)
-            }).catch((err) => {
-              console.log(`FAILED!: ${err}`);
-            });
+            module.exports = (trelloClient, trelloIDList6, message) => {
+              const userName = message.member.nickname;
+              const content = (`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+              const title = `${userName}`;
+              const desc = `${content}`;
+              console.log(`Send Trello: ${title}`);
+              return new Promise((resolve, reject) => {
+                trelloClient.post("/1/cards", {idList: trelloIDList6, name: title, desc: desc}, (err, data) => {
+                  if (err) {
+                    return reject(err);
+                  } else {
+                    return resolve(data);
+                  }
+                });
+              });
+            };
+            
 
 
            
