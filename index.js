@@ -524,7 +524,7 @@ if(isCommand2('Suspend', message)){
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
-            .setTitle(`Promotion Notice Notice`)
+            .setTitle(`Promotion Notice`)
             .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
