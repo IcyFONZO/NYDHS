@@ -518,7 +518,7 @@ if(isCommand2('Suspend', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-          let name = 50;
+          let name = args.slice(2).join(" ");
 
           roblox.setRank(groupId, id, name)
           .then(function(roles){
