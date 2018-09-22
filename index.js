@@ -551,17 +551,17 @@ if(isCommand2('Rank', message)){
 
          
           }).catch(function(err){
-            message.channel.send("Failed to promote. Please try again!")
+            message.channel.send("Failed to promote. Please try again! *(Need help? Say `rankhelp`)*")
           });
         }
       }).catch(function(err){
-        message.channel.send("Couldn't find them! Please try again!")
+        message.channel.send("Couldn't find them! Please try again! *(Need help? Say `rankhelp`)*")
       });
     }).catch(function(err){ 
-      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group. *(Need help? Say "rankhelp")*`)
     });
     } else {
-      message.channel.send("Oops! I think you forgot to give me the username.")
+      message.channel.send("Oops! I think you forgot to give me the username. *(Need help? Say `rankhelp`)*")
     }
     return;
 }
@@ -569,24 +569,26 @@ if(isCommand2('Rank', message)){
 if(isCommand('rankhelp', message)){
   if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
+
+      
       
       let embedfour1 = new discord.RichEmbed()
             .setTitle(`Help Menu: Rank Command`)
             .setDescription("The following are the numerical codes for each rank.")
-            .addField("Special Responce Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** \n.rank coolguzman11 50")
+            .addField("Special Responce Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
-            
+            message.reply().then(msg => {msg.delete[9000]});
             message.channel.send(embedfour1).then(msg => {msg.delete[9000]});
 
           
      
 }
   
-  
+
 
 
 
