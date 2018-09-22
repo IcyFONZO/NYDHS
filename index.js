@@ -518,9 +518,11 @@ if(isCommand2('Suspend', message)){
           message.reply("Oops! Seems like I can't do that!")
         
         } else {
-          let name = args.slice(2).join(" ");
 
-          roblox.setRank(groupId, id, name)
+          
+          let roleset = args[2];
+
+          roblox.setRank(groupId, id, roleset)
           .then(function(roles){
 
             let embedfour = new discord.RichEmbed()
