@@ -6,13 +6,24 @@ const trelloToken = process.env.TRELLO_TOKEN;
 const discordBotToken = process.env.DISCORD_BOT_TOKEN;
 const discordChannelID = process.env.DISCORD_CHANNEL_ID;
 const discordInactive = process.env.DISCORD_INACTIVE;
-const discordTraining = process.env.DISCORD_TRAINING;
-const trelloIDList = process.env.TRELLO_ID_LIST_CG;
-const trelloIDList2 = process.env.TRELLO_ID_LIST_CG2;
+const discordComplaints = process.env.DISCORD_COMPAINTS;
+const trelloIDList = process.env.TRELLO_ID_LIST_SS;
+const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
+const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
+const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const trelloIDList6 = process.env.TRELLO_ID_LIST_TRAINING;
+const roblox = require('roblox-js');
+const password = process.env.ROBLOX_PASSWORD
 
-[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordTraining, trelloIDList, trelloIDList2, trelloIDList5, trelloIDList6].forEach(i => {
+roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
+
+}).catch(() => {console.log("Sorry, it failed.");});
+
+
+
+
+
+[trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
     process.exit(0);
@@ -23,8 +34,13 @@ const discord = require("discord.js");
 const client = new discord.Client();
 const Trello = require("node-trello");
 const trelloClient = new Trello(trelloKey, trelloToken);
-const postTrello = require("./lib/trello/post_trello_CG");
-const post2Trello = require("./lib/trello/post_trello_CG2");
+const postTrello = require("./lib/trello/post_trello_SS");
+
+client.on("ready", message => {
+  console.log(`${client.user.username} is online in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
+  client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});
+});
+
 
 function isCommand(command, message){
   var command = command.toLowerCase();
@@ -33,43 +49,47 @@ function isCommand(command, message){
 }
 
 
-client.on("ready", message => {
-  console.log(`${client.user.username} is online in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
-  let currentActivity = 0
-   
-   
-  setInterval(async () => {
-    currentActivity++
-    
-
-    if (currentActivity > 2) {
-      currentActivity = 0
-    }
-
-    switch (currentActivity) {
-      case 0:
-        client.user.setActivity('[NYCG] Cape May Training Facility')
-        break
-      case 1:
-        client.user.setPresence({ game: { name: 'What does this buttton do? Hmmmm?', type: "streaming", url: "https://www.twitch.tv/icoolp"}}); 
-        break
-      case 2:
-        client.user.setActivity(`${client.users.size} users`, { type: 'WATCHING' })
-        break
-    }
-  }, 10000)
- 
-
-  client.user.setActivity('[NYCG] Cape May Training Facility')
-});
-
-
 client.on("message", message => {
   if(message.author.bot) return;
-  if (message.channel.id === discordChannelID) {
-    
+ 
+
+    if(isCommand('main', message)){
+      if(message.author.id !== ("236238325306884096")) return;
+
+
+      message.delete().catch();
+
+      let raskj = new discord.RichEmbed()
+      .setImage("https://cdn.discordapp.com/attachments/490607262188961824/490617665040416788/DHS_Under_Maintenance.jpg")
+      .setColor("#ccccdd");
+
+      message.channel.send(raskj);
+      
+    }
+
+//     if(isCommand('format', message)){
+//       if(message.author.id !== ("236238325306884096")) return;
+
+
+//       message.delete().catch();
+// //**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST
+//       let raskj6 = new discord.RichEmbed()
+//       .setTitle("Patrol Log Format")
+//       .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
+//       .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " \n**Patrol Log Example** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST \n**About NYDHS Discord Bot**\n• Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n• If you do not receive a confirmation message, that means your log was **NOT** uploaded to the Trello and you need to try again and make sure you are using the correct format. \n • The format **ONLY** has to be in the order provided, capitalization will not affect the logging process.")
+//       .setColor("#ccccdd")
+//       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+//       message.channel.send(raskj6);
+      
+//     }
+
+  
+
+    if (message.channel.id === discordChannelID) {
+
     //SS
-    if(isCommand('Section: 1', message)){ 
+    if(isCommand('Division: SS', message)){ 
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       
@@ -79,11 +99,11 @@ client.on("message", message => {
       
 
       let ssEmbed = new discord.RichEmbed()
-      .setColor("#42a7f4")
+      .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Section 1 | Patrol Logs** Trello list.")
+      .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
       .addField("Link to your log", `${shortUrl}`)
-      .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
 
@@ -99,45 +119,115 @@ client.on("message", message => {
   
     });
   }
-  
-
-  if(isCommand('Section: 2', message)){ 
-    post2Trello(trelloClient, trelloIDList2, message).then((data) => {
-      
+    //SRT
+    if(isCommand('Division: SRT', message)){ 
     
+    const postTrello = require("./lib/trello/post_trello_SRT");
+       
+    postTrello(trelloClient, trelloIDList2, message).then((data) => {
       const dataObject = data;
       const shortUrl = dataObject.shortUrl;
       
 
-      let ssEmbed = new discord.RichEmbed()
-      .setColor("#42a7f4")
+      let srtEmbed = new discord.RichEmbed()
+      .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
-      .setDescription("Your log was uploaded to the **Section 2 | Patrol Logs** Trello list.")
+      .setDescription("Your log was uploaded to the **Special Response Team** Trello list.")
       .addField("Link to your log", `${shortUrl}`)
-      .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
-
-
-
-
+  
       message.delete().catch();
       message.reply().then(msg => {msg.delete(12000)})
-      message.channel.send(ssEmbed).then(msg => {msg.delete(12000)})
+     message.channel.send(srtEmbed).then(msg => {msg.delete(12000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
-  
     });
-  }
-
-
     }
-  
+      
+    //FPS
+    if(isCommand('Division: FPS', message)){ 
+    	
+      
+      const postTrello = require("./lib/trello/post_trello_FPS");
+             
+      postTrello(trelloClient, trelloIDList3, message).then((data) => {
+      const dataObject = data;
+      const shortUrl = dataObject.shortUrl;
+      
 
+      let fpsEmbed = new discord.RichEmbed()
+      .setColor("#3465ed")
+      .setTitle("Patrol Log Successfully Uploaded!")
+      .setDescription("Your log was uploaded to the **Federal Protective Service** Trello list.")
+      .addField("Link to your log", `${shortUrl}`)
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
+        
+        message.delete().catch();
+        message.reply().then(msg => {msg.delete(12000)})
+        message.channel.send(fpsEmbed).then(msg => {msg.delete(12000)})
+            
+        }).catch((err) => {
+          console.log(`FAILED!: ${err}`);
+      });
+      }
+
+
+      //HSI
+      if(isCommand('Division: HSI', message)){ 
+    	
+          
+          const postTrello = require("./lib/trello/post_trello_HSI");
+             
+          postTrello(trelloClient, trelloIDList4, message).then((data) => {
+            const dataObject = data;
+            const shortUrl = dataObject.shortUrl;
+            
+      
+            let hsiEmbed = new discord.RichEmbed()
+            .setColor("#3465ed")
+            .setTitle("Patrol Log Successfully Uploaded!")
+            .setDescription("Your log was uploaded to the **Intelligence Office** Trello list.")
+            .addField("Link to your log", `${shortUrl}`)
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+      
+            
+        //Intelligence Office
+            message.delete().catch();
+            message.reply().then(msg => {msg.delete(12000)})
+           message.channel.send(hsiEmbed).then(msg => {msg.delete(12000)})
+            
+          }).catch((err) => {
+            console.log(`FAILED!: ${err}`);
+          });
+        }
+    }
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
-    if(isCommand("Name:", message)){ 
+
+    // if(isCommand('formatinac', message)){
+    //   if(message.author.id !== ("236238325306884096")) return;
+
+
+    //   message.delete().catch();
+
+    //   let raskj64 = new discord.RichEmbed()
+    //   .setTitle("Inactivity Notice Format")
+    //   .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
+    //   .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
+    //   .setColor("#ccccdd")
+    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+    //   message.channel.send(raskj64);
+      
+    // }
+    if(isCommand('Username:', message)){ 
     	
       console.log("gatcha!");
       const postTrello = require("./lib/trello/post_trello_INACTIVE");
@@ -148,11 +238,11 @@ client.on("message", message => {
         
   
         let hEmbed = new discord.RichEmbed()
-        .setColor("#42a7f4")
+        .setColor("#3465ed")
         .setTitle("Inactivity Notice was Successfully Uploaded!")
         .setDescription("Your notice was uploaded to the **Inactivity Notice** Trello list.")
         .addField("Link to your notice", `${shortUrl}`)
-        .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg")
+        .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
         .setFooter(message.author.username, message.author.displayAvatarURL)
         .setTimestamp();
     
@@ -167,133 +257,356 @@ client.on("message", message => {
   }
 
   if(message.author.bot) return;
-  if (message.channel.id === discordTraining) {
-    if(isCommand("Host:", message)){ 
-    	
-      console.log("gatcha!");
-      const postTrello = require("./lib/trello/post_trello_TRAINING");
-         
-      postTrello(trelloClient, trelloIDList6, message).then((data) => {
-        const dataObject = data;
-        const shortUrl = dataObject.shortUrl;
-        
-  
-        let hEmbed = new discord.RichEmbed()
-        .setColor("#42a7f4")
-        .setTitle("Training Log was Successfully Uploaded!")
-        .setDescription("Your log was uploaded to the **Training Logs** Trello list.")
-        .addField("Link to your log", `${shortUrl}`)
-        .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg")
-        .setFooter(message.author.username, message.author.displayAvatarURL)
-        .setTimestamp();
-    
-        message.delete().catch();
-        message.reply().then(msg => {msg.delete(12000)})
-       message.channel.send(hEmbed).then(msg => {msg.delete(12000)})
-        
-      }).catch((err) => {
-        console.log(`FAILED!: ${err}`);
-      });
-    }
+  if (message.channel.id === discordComplaints) {
 
+    // if(isCommand('formatcom', message)){
+    //   if(message.author.id !== ("236238325306884096")) return;
+
+
+    //   message.delete().catch();
+
+    //   let raskj654 = new discord.RichEmbed()
+    //   .setTitle("Complaint Format")
+    //   .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
+    //   .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** All Complaints are reviewed thoroughly by the Homeland Security Investigations Department.")
+    //   .setColor("#ccccdd")
+    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+    //   message.channel.send(raskj654);
+      
+    // }
+    if (message.content.startsWith("Username:")) return;
+
+    message.delete().catch();
+    
   }
-    const prefix = "!";
+
+  var prefix = '.';
+  var groupId = 3632026;
+  var maximumRank = 85;
+
   
-    function isCommand2(command, message){
-      var command = command.toLowerCase();
-      var content = message.content.toLowerCase();
-      return content.startsWith(prefix + command);
-    }
+function isCommand2(command, message){
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(prefix + command);
+}
+
+ 
+	var args = message.content.split(/[ ]+/)
+
+  
+  if(isCommand2('Promote', message)){
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+        return;
+        
+        // if(message.author.id !== ("236238325306884096")) return;
+    	var username = args[1]
+    	if (username){
+			
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
+
+						message.reply("Oops! Seems like that rank is to high!")
+					
+					} else {
+
+						roblox.promote(groupId, id)
+						.then(function(roles){
+
+							let embedfour = new discord.RichEmbed()
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
+
+						
+            message.channel.send(embedfour);
+            console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+
+            let embedfourB = new discord.RichEmbed()
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
+
+              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourB);
+
+           
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again!")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+	}
+	
+	if(isCommand2('Demote', message)){
+		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+        return;
+        
+        // if(message.author.id !== ("236238325306884096")) return;
+    	var username = args[1]
+    	if (username){
+			
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+				.then(function(rank){
+					if(maximumRank <= rank){
+
+						message.reply("Oops! Seems like that rank is to high!")
+					
+					} else {
+
+						roblox.demote(groupId, id)
+						.then(function(roles){
+
+							let embedfo2ur = new discord.RichEmbed()
+              .setTitle(`Demotion Notice`)
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
+
+						
+            message.channel.send(embedfo2ur);
+            console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+
+            let embedfourBA = new discord.RichEmbed()
+              .setTitle(`Demotion Notice`)
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
+							.setColor("#3465ed")
+              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setTimestamp();
+
+              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourBA);
+
+           
+						}).catch(function(err){
+							message.channel.send("Failed to promote. Please try again!")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't find them! Please try again!")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+			});
+    	} else {
+    		message.channel.send("Oops! I think you forgot to give me the username.")
+    	}
+    	return;
+	}
 
 
-    if(isCommand2('Mass', message)){
-      if(!message.member.roles.some(r=>["Company Commander" ,"Master Chief Petty Officer of the CG" ,"Officer Personnel", "High Command Personnel", "Vice Commandant of the Coast Guard", "Commandant of the Coast Guard", "Commander In Chief"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-          return;
-            
-          message.channel.send(`@here`)
+if(isCommand2(`Shout`, message)){
+  // if(message.author.id !== ("236238325306884096")) return;
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
+  message.reply('Please specify a message to shout.')
+  return;
+  
+}
+const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
 
-          var d = new Date,
-    dformat = [d.getMonth()+1,
-               d.getDate(),
-               d.getFullYear()].join('/')+' '+
-              [d.getHours(),
-               d.getMinutes(),
-               d.getSeconds()].join(':');
+roblox.shout(groupId, shoutMSG)
+	.then(function() {
+
+		let embedsix = new discord.RichEmbed()
+		.setTitle(`Group Shout Notice`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
+    .setColor("#3465ed")
+    .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+    .setTimestamp();
+
+		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
+    // message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
 
 
-          let anotherembed = new discord.RichEmbed()
+    let embedsix1 = new discord.RichEmbed()
+		.setTitle(`Group Shout Notice`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n${message.channel.guild.name}`)
+    .setColor("#3465ed")
+    .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+    .setTimestamp();
 
-          .setTitle("United States Coast Guard | Automated System")
-          .setDescription(`Host: <@${message.channel.id}> \nEvent Type: **Mass Patrol** \nDate: ${d} \nLocation: https://www.roblox.com/games/10524855/Sale-New-York-City`)
-          .setColor("#42a7f4")
-          .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg");
+    client.guilds.get("275080442560905216").channels.get("492896970680303620").send(embedsix1);
+    
+    
+	})
+	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
+		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
+	});
+}
 
-          messge.channel.semd(anotherembed);
-              
+if(isCommand2('Suspend', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      // if(message.author.id !== ("236238325306884096")) return;
+    var username = args[1]
+    if (username){
+    
+      roblox.getIdFromUsername(username)
+    .then(function(id){
+      roblox.getRankInGroup(groupId, id)
+      .then(function(rank){
+        if(maximumRank <= rank){
+
+          message.reply("Oops! Seems like that rank is to high!")
+        
+        } else {
+          let roleset= 10;
+
+          roblox.setRank(groupId, id, roleset)
+          .then(function(roles){
+
+            let embedfou2r = new discord.RichEmbed()
+            .setTitle(`Suspension Notice`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          
+          message.channel.send(embedfou2r);
+
+
+          let embedfou23r = new discord.RichEmbed()
+            .setTitle(`Suspension Notice`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n- \n${message.channel.guild.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+
+          client.guilds.get("275080442560905216").channels.get("492897084672835584").send(embedfou23r);
+      
+
+         
+          }).catch(function(err){
+            message.channel.send("Failed to promote. Please try again!")
+          });
         }
-
-
-
-
-        if(isCommand2('Training', message)){
-          if(!message.member.roles.some(r=>["Company Commander" ,"Master Chief Petty Officer of the CG" ,"Officer Personnel", "High Command Personnel", "Vice Commandant of the Coast Guard", "Commandant of the Coast Guard", "Commander In Chief"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-              return;
-                
-              message.channel.send(`@here`)
+      }).catch(function(err){
+        message.channel.send("Couldn't find them! Please try again!")
+      });
+    }).catch(function(err){ 
+      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+    });
+    } else {
+      message.channel.send("Oops! I think you forgot to give me the username.")
+    }
+    return;
+}
+  
+if(isCommand2('Rank', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      // if(message.author.id !== ("236238325306884096")) return;
+    var username = args[1]
+    var name = parseInt(args[2])
+    if (username){
     
-              var d = new Date,
-              dformat = [(d.getMonth()+1).padLeft(),
-                         d.getDate().padLeft(),
-                         d.getFullYear()].join('/') +' ' +
-                        [d.getHours().padLeft(),
-                         d.getMinutes().padLeft(),
-                         d.getSeconds().padLeft()].join(':');
-          //=> dformat => '05/17/2012 10:52:21'
-    
-    
-              let another2embed = new discord.RichEmbed()
-    
-              .setTitle("United States Coast Guard | Automated System")
-              .setDescription(`Host: <@${message.channel.id}> \nEvent Type: **Training** \nDate: ${d} \nLocation: https://www.roblox.com/games/863706791/NYCG-Cape-May-Training-Facility`)
-              .setColor("#42a7f4")
-              .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg");
-    
-              messge.channel.semd(another2embed);
-                  
-            }
+      roblox.getIdFromUsername(username)
+    .then(function(id){
+      roblox.getRankInGroup(groupId, id)
+      .then(function(rank){
+        if(maximumRank <= rank){
 
-
-            if(isCommand2('bt', message)){
-              if(!message.member.roles.some(r=>["Company Commander" ,"Master Chief Petty Officer of the CG" ,"Officer Personnel", "High Command Personnel", "Vice Commandant of the Coast Guard", "Commandant of the Coast Guard", "Commander In Chief"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-                  return;
-
-                  let her2eRole = message.guild.roles.find("name", "Coast Guard Recruit");
-                    
-                  message.channel.send(`${her2eRole}`)
+          message.reply("Oops! Seems like I can't do that!")
         
-                  var d = new Date,
-                  dformat = [(d.getMonth()+1).padLeft(),
-                             d.getDate().padLeft(),
-                             d.getFullYear()].join('/') +' ' +
-                            [d.getHours().padLeft(),
-                             d.getMinutes().padLeft(),
-                             d.getSeconds().padLeft()].join(':');
-              //=> dformat => '05/17/2012 10:52:21'
-        
-        
-                  let anotherem2bed = new discord.RichEmbed()
-        
-                  .setTitle("United States Coast Guard | Automated System")
-                  .setDescription(`Host: <@${message.channel.id}> \nEvent Type: **Basic Training** \nDate: ${d} \nLocation: https://www.roblox.com/games/863706791/NYCG-Cape-May-Training-Facility`)
-                  .setColor("#42a7f4")
-                  .setThumbnail("https://cdn.discordapp.com/attachments/472476040317370369/476468504326045716/23download.jpg");
-        
-                  messge.channel.semd(anotherem2bed);
-                      
-                }
+        } else {
+          
 
+          roblox.setRank(groupId, id, name)
+          .then(function(roles){
 
+            let embedfour7 = new discord.RichEmbed()
+            .setTitle(`Promotion Notice`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}!`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
 
+          
+          message.channel.send(embedfour7);
+
+          let embedfour72 = new discord.RichEmbed()
+            .setTitle(`Promotion Notice`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}! \n- \n${message.channel.guild.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          client.guilds.get("275080442560905216").channels.get("492897029035655175").send(embedfour72);
+      
+         
+
+         
+          }).catch(function(err){
+            message.channel.send("Failed to promote. Please try again! *(Need help? Say `rankhelp`)*")
+          });
+        }
+      }).catch(function(err){
+        message.channel.send("Couldn't find them! Please try again! *(Need help? Say `rankhelp`)*")
+      });
+    }).catch(function(err){ 
+      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group. *(Need help? Say "rankhelp")*`)
+    });
+    } else {
+      message.channel.send("Oops! I think you forgot to give me the username. *(Need help? Say `rankhelp`)*")
+    }
+    return;
+}
+
+if(isCommand('rankhelp', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+
+      
+      
+      let embedfour1 = new discord.RichEmbed()
+            .setTitle(`Help Menu: Rank Command`)
+            .setDescription("The following are the numerical codes for each rank.")
+            .addField("Lieutenant - 85 \nSergeant - 80 \nCorporal - 75 \nSpecial Response Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+            message.reply().then(msg => {msg.delete[9000]});
+            message.channel.send(embedfour1).then(msg => {msg.delete[9000]});
+
+          
+     
+}
+  
 
 
 
