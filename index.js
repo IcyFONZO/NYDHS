@@ -607,40 +607,6 @@ if(isCommand('rankhelp', message)){
      
 }
 	
-if(isCommand2('getrank', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-      return;
-
-   	var username = args[1]
-    	if (username){
-			
-    		roblox.getIdFromUsername(username)
-			.then(function(id){
-				let rig = roblox.getRankNameInGroup(groupId, id)
-				.then(function(rank){
-					if(maximumRank <= rank){
-
-						message.reply(`The user's rank is ${rig}!`)
-					
-					} else {
-
-						
-          					message.reply(`The user's rank is ${rig}!`)
-           
-					}
-				}).catch(function(err){
-					message.channel.send("Couldn't find them! Please try again!")
-				});
-			}).catch(function(err){ 
-				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
-			});
-    	} else {
-    		message.channel.send("Oops! I think you forgot to give me the username.")
-    	}
-    	return;
-	}
-
-  
 
 
 
