@@ -607,7 +607,7 @@ if(isCommand('rankhelp', message)){
      
 }
 	
-if(isCommand('getRank', message)){
+if(isCommand2('getrank', message)){
   if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
 
@@ -620,12 +620,12 @@ if(isCommand('getRank', message)){
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply(`The user's rank is ${rank}`)
+						message.reply(`The user's rank is ${rank}!`)
 					
 					} else {
 
 						
-          						message.reply(`The user's rank is ${rank}`)
+          					message.reply(`The user's rank is ${rank}!`)
            
 					}
 				}).catch(function(err){
