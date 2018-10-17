@@ -606,6 +606,33 @@ if(isCommand('rankhelp', message)){
           
      
 }
+	
+if(isCommand('getRank', message)){
+  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+
+      var username = args[1]
+    	if (username){
+			
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+      
+      let embedfour21 = new discord.RichEmbed()
+            .setTitle(`Rank Information`)
+            .setDescription("This is a test")
+            .addField(`${rank}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+            message.reply().then(msg => {msg.delete[9000]});
+            message.channel.send(embedfour21).then(msg => {msg.delete[9000]});
+
+          
+     
+}
   
 
 
