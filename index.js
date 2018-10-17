@@ -616,16 +616,16 @@ if(isCommand2('getrank', message)){
 			
     		roblox.getIdFromUsername(username)
 			.then(function(id){
-				roblox.getRankInGroup(groupId, id)
+				let rig = await roblox.getRankNameInGroup(groupId, id)
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply(`The user's rank is ${rank}!`)
+						message.reply(`The user's rank is ${rig}!`)
 					
 					} else {
 
 						
-          					message.reply(`The user's rank is ${rank}!`)
+          					message.reply(`The user's rank is ${rig}!`)
            
 					}
 				}).catch(function(err){
