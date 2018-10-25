@@ -346,7 +346,7 @@ function isCommand2(command, message){
 
            
 						}).catch(function(err){
-							message.channel.send("Failed to promote. Please try again!")
+							console.log(err);
 						});
 					}
 				}).catch(function(err){
