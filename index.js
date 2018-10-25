@@ -329,14 +329,13 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-            const newDate = new Date()
-            const date = `${fl(newDate.getDate())}/${fl(newDate.getMonth() + 1)}/${fl(newDate.getFullYear())}`;
+          
             const robloxuser = message.member.displayName;
             const robloxidthing =  roblox.getIdFromUsername(robloxuser);
             const rankthing = roblox.getRankNameInGroup(groupId, id);
 
             let embedfourB = new discord.RichEmbed()
-              .setTitle(`Promotion Notice - ${date}`)
+              .setTitle(`Promotion Notice - [soon]`)
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: ${message.channel.name}`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
