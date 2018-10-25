@@ -329,17 +329,13 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
-          
-            const robloxuser = message.member.displayName;
-            const robloxidthing =  roblox.getIdFromUsername(robloxuser);
-            const rankthing = roblox.getRankNameInGroup(groupId, id);
-
             let embedfourB = new discord.RichEmbed()
-              .setTitle(`Promotion Notice - [soon]`)
-              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: ${message.channel.name}`)
+              .setTitle(`Promotion Notice`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: #${message.channel.name}`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter(`ROBLOX Information: ${robloxuser} User ID: ${robloxidthing} Rank: ${rankthing}`);
+              .setFooter(`This is an automated messages in-responds to a successful promotion.`)
+              .setTimestamp();
 
               client.guilds.get("490607262188961822").channels.get("504770196825702403").send(embedfourB);
 
