@@ -297,7 +297,7 @@ function isCommand2(command, message){
 
   
   if(isCommand2('Promote', message)){
-		if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+		if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
         return;
         
         // if(message.author.id !== ("236238325306884096")) return;
@@ -329,15 +329,20 @@ function isCommand2(command, message){
             message.channel.send(embedfour);
             console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
+            const newDate = new Date()
+            const date = `${fl(newDate.getDate())}/${fl(newDate.getMonth() + 1)}/${fl(newDate.getFullYear())}`;
+            const robloxuser = message.member.displayName;
+            const robloxidthing =  roblox.getIdFromUsername(robloxuser);
+            const rankthing = roblox.getRankNameInGroup(groupId, id);
+
             let embedfourB = new discord.RichEmbed()
-              .setTitle(`Promotion Notice`)
-              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
+              .setTitle(`Promotion Notice - ${date}`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: ${message.channel.name}`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-							.setTimestamp();
+							.setFooter(`ROBLOX Information: ${robloxuser} User ID: ${robloxidthing} Rank: ${rankthing}`);
 
-              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourB);
+              client.guilds.get("490607262188961822").channels.get("504770196825702403").send(embedfourB);
 
            
 						}).catch(function(err){
@@ -397,7 +402,7 @@ function isCommand2(command, message){
 							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
-              client.guilds.get("275080442560905216").channels.get("492896872726396928").send(embedfourBA);
+              client.guilds.get("490607262188961822").channels.get("504770271757205504").send(embedfourBA);
 
            
 						}).catch(function(err){
@@ -450,7 +455,7 @@ roblox.shout(groupId, shoutMSG)
     .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
     .setTimestamp();
 
-    client.guilds.get("275080442560905216").channels.get("492896970680303620").send(embedsix1);
+    client.guilds.get("490607262188961822").channels.get("505011445440839680").send(embedsix1);
     
     
 	})
@@ -502,7 +507,7 @@ if(isCommand2('Suspend', message)){
             .setTimestamp();
 
 
-          client.guilds.get("275080442560905216").channels.get("492897084672835584").send(embedfou23r);
+            client.guilds.get("490607262188961822").channels.get("504770325377187851").send(embedfou23r);
       
 
          
@@ -547,7 +552,7 @@ if(isCommand2('Rank', message)){
 
             let embedfour7 = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -558,13 +563,13 @@ if(isCommand2('Rank', message)){
 
           let embedfour72 = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}! \n- \n${message.channel.guild.name}`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}! \n- \n${message.channel.guild.name}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
-          client.guilds.get("275080442560905216").channels.get("492897029035655175").send(embedfour72);
+            client.guilds.get("490607262188961822").channels.get("504770304992870421").send(embedfour72);
       
          
 
@@ -606,7 +611,9 @@ if(isCommand('rankhelp', message)){
           
      
 }
-	
+
+
+
 
 
 
