@@ -713,6 +713,28 @@ if(isCommand2('accept', message)){
 
 
 
+if(isCommand('say', message)){
+  if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+
+      let botmessage = args.join (" ");
+      message.delete().catch();
+
+      
+      let embedfour1 = new discord.RichEmbed()
+            .setTitle(botmessage)
+            .setDescription(`Message From: <@${message.author.id}>`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+            message.channel.send("@here")
+            message.channel.send(embedfour1)
+
+          
+     
+}
 
 
 
