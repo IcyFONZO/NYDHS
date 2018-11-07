@@ -390,12 +390,12 @@ function isCommand2(command, message){
             console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
             let embedfourBA = new discord.RichEmbed()
-              .setTitle(`Demotion Notice`)
-              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \n${message.channel.guild.name}`)
-							.setColor("#3465ed")
-              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-							.setTimestamp();
+            .setTitle(`Demotion Notice`)
+            .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: #${message.channel.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter(`This is an automated messages in-responds to a successful demotion.`)
+            .setTimestamp();
 
               client.guilds.get("490607262188961822").channels.get("504770271757205504").send(embedfourBA);
 
@@ -419,7 +419,7 @@ function isCommand2(command, message){
 
 if(isCommand2(`Shout`, message)){
   // if(message.author.id !== ("236238325306884096")) return;
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
   if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
   message.reply('Please specify a message to shout.')
   return;
@@ -460,7 +460,7 @@ roblox.shout(groupId, shoutMSG)
 }
 
 if(isCommand2('Suspend', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
       // if(message.author.id !== ("236238325306884096")) return;
@@ -523,7 +523,7 @@ if(isCommand2('Suspend', message)){
 }
   
 if(isCommand2('Rank', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
       
       // if(message.author.id !== ("236238325306884096")) return;
@@ -586,7 +586,7 @@ if(isCommand2('Rank', message)){
 }
 
 if(isCommand('rankhelp', message)){
-  if(!message.member.roles.some(r=>["Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
 
       
@@ -608,6 +608,108 @@ if(isCommand('rankhelp', message)){
 }
 
 
+if(isCommand2('exile', message)){
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      // if(message.author.id !== ("236238325306884096")) return;
+    var username = args[1]
+    if (username){
+    
+      roblox.getIdFromUsername(username)
+    .then(function(id){
+      roblox.getRankInGroup(groupId, id)
+      .then(function(rank){
+        if(maximumRank <= rank){
+
+          message.reply("Oops! Seems like that rank is to high!")
+        
+        } else {
+       
+
+          roblox.exile(groupId, id)
+          .then(function(roles){
+
+            let embedfou22r = new discord.RichEmbed()
+            .setTitle(`Termination Notice`)
+            .setDescription(`<@${message.author.id}> has **terminated** ${username}!`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          
+          message.channel.send(embedfou22r);
+
+
+          let embedfou223r = new discord.RichEmbed()
+            .setTitle(`Termination Notice`)
+            .setDescription(`<@${message.author.id}> has **terminated** ${username}! \n- \n${message.channel.guild.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+
+            client.guilds.get("490607262188961822").channels.get("504770451441188874").send(embedfou223r);
+      
+
+         
+          }).catch(function(err){
+            message.channel.send("Failed to promote. Please try again!")
+          });
+        }
+      }).catch(function(err){
+        message.channel.send("Couldn't find them! Please try again!")
+      });
+    }).catch(function(err){ 
+      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+    });
+    } else {
+      message.channel.send("Oops! I think you forgot to give me the username.")
+    }
+    return;
+}
+
+if(isCommand2('accept', message)){
+  if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+      return;
+      
+      // if(message.author.id !== ("236238325306884096")) return;
+    var username = args[1]
+       
+
+          roblox.handleJoinRequest(groupId, username, true)
+          .then(function(promise){
+
+            let embedfou22r = new discord.RichEmbed()
+            .setTitle(`Acceptance Notice`)
+            .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security!`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+          
+          message.channel.send(embedfou22r);
+
+
+          let embedfou223r = new discord.RichEmbed()
+          .setTitle(`Acceptance Notice`)
+          .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security! \n- \n${message.channel.guild.name}`)
+          .setColor("#3465ed")
+          .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+          .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+          .setTimestamp();
+
+
+          client.guilds.get("490607262188961822").channels.get("509520756338851842").send(embedfou223r);
+      
+
+         
+       
+})
+};
 
 
 
