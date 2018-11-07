@@ -444,7 +444,7 @@ roblox.shout(groupId, shoutMSG)
 
     let embedsix1 = new discord.RichEmbed()
 		.setTitle(`Group Shout Notice`)
-    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n${message.channel.guild.name}`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n- \nChannel Used: #${message.channel.name}`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
     .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -495,7 +495,7 @@ if(isCommand2('Suspend', message)){
 
           let embedfou23r = new discord.RichEmbed()
             .setTitle(`Suspension Notice`)
-            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n- \n${message.channel.guild.name}`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n- \nChannel Used: #${message.channel.name}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -547,7 +547,7 @@ if(isCommand2('Rank', message)){
 
             let embedfour7 = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}!`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -558,7 +558,7 @@ if(isCommand2('Rank', message)){
 
           let embedfour72 = new discord.RichEmbed()
             .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username} to ${newRole}! \n- \n${message.channel.guild.name}`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username}! \n- \nChannel Used: #${message.channel.name}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -644,7 +644,7 @@ if(isCommand2('exile', message)){
 
           let embedfou223r = new discord.RichEmbed()
             .setTitle(`Termination Notice`)
-            .setDescription(`<@${message.author.id}> has **terminated** ${username}! \n- \n${message.channel.guild.name}`)
+            .setDescription(`<@${message.author.id}> has **terminated** ${username}! \n- \nChannel Used: #${message.channel.name}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -696,7 +696,7 @@ if(isCommand2('accept', message)){
 
           let embedfou223r = new discord.RichEmbed()
           .setTitle(`Acceptance Notice`)
-          .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security! \n- \n${message.channel.guild.name}`)
+          .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security! \n- \nChannel Used: #${message.channel.name}`)
           .setColor("#3465ed")
           .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
           .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
