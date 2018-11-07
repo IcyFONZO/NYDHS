@@ -713,7 +713,7 @@ if(isCommand2('accept', message)){
 
 
 
-if(isCommand('say', message)){
+if(isCommand2('say', message)){
   if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
 
