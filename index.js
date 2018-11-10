@@ -779,7 +779,7 @@ function sleep(ms){
     })
   }
 
-   let msg = await message.channel.send(help1).then((msg) => {
+   let msg = message.channel.send(help1).then((msg) => {
     msg.react(one);
     sleep(250);
     msg.react(two);
