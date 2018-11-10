@@ -737,76 +737,76 @@ if(isCommand2('say', message)){
 }
 
 
-if(isCommand2('help', message)){
-  if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
-      return;
+// if(isCommand2('help', message)){
+//   if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+//       return;
 
-  const one = "1⃣", two = '2⃣', three = '3⃣', four = '4⃣', five = '5⃣', six = '6⃣', seven = '7⃣', eight = '8⃣', nine = '9⃣', ten = '🔟';
+//   const one = "1⃣", two = '2⃣', three = '3⃣', four = '4⃣', five = '5⃣', six = '6⃣', seven = '7⃣', eight = '8⃣', nine = '9⃣', ten = '🔟';
 
       
-let help1 = new discord.RichEmbed()
-.setTitle("Department of Homeland Security | Automated System")
-.setDescription("Please review the following choices and react with the correct reaction to reach the correct help menu page. Thank you for choosing NYDHS.")
-.addField(":one:", "**Integrated Commands**", true)
-.addField(":two:", "**Trouble Shooting**", true)
-.addField(":three:", "**How it Works**", true)
-.setColor("#3465ed")
-.setFooter("Automated System brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.");
+// let help1 = new discord.RichEmbed()
+// .setTitle("Department of Homeland Security | Automated System")
+// .setDescription("Please review the following choices and react with the correct reaction to reach the correct help menu page. Thank you for choosing NYDHS.")
+// .addField(":one:", "**Integrated Commands**", true)
+// .addField(":two:", "**Trouble Shooting**", true)
+// .addField(":three:", "**How it Works**", true)
+// .setColor("#3465ed")
+// .setFooter("Automated System brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.");
 
 
-let help2 = new discord.RichEmbed()
-.setTitle("Department of Homeland Security | Automated System")
-.setDescription("**TROUBLE SHOOTING**")
-.setColor("#3465ed");
+// let help2 = new discord.RichEmbed()
+// .setTitle("Department of Homeland Security | Automated System")
+// .setDescription("**TROUBLE SHOOTING**")
+// .setColor("#3465ed");
 
-let help3 = new discord.RichEmbed()
-.setTitle("Department of Homeland Security | Automated System")
-.setDescription("**INTEGRATED COMMANDS**")
-.setColor("#3465ed");
-
-
-let help4 = new discord.RichEmbed()
-.setTitle("Department of Homeland Security | Automated System")
-.setDescription("**HOW IT WORKS**")
-.setColor("#3465ed");
+// let help3 = new discord.RichEmbed()
+// .setTitle("Department of Homeland Security | Automated System")
+// .setDescription("**INTEGRATED COMMANDS**")
+// .setColor("#3465ed");
 
 
+// let help4 = new discord.RichEmbed()
+// .setTitle("Department of Homeland Security | Automated System")
+// .setDescription("**HOW IT WORKS**")
+// .setColor("#3465ed");
 
 
-function sleep(ms){
-    return new Promise(resolve=>{
-        setTimeout(resolve,ms)
-    })
-  }
 
-   let msg = message.channel.send(help1).then((msg) => {
-    msg.react(one);
-    sleep(250);
-    msg.react(two);
-    sleep(250);
-    msg.react(three);
 
-    const collector = msg.createReactionCollector((reaction, user) => 
-    user.id !== message.author.id &&
-    reaction.emoji.name === one ||
-    reaction.emoji.name === two ||
-    reaction.emoji.name === three
-    ("collect", reaction => {
-    const chosen = reaction.emoji.name;
-    if(chosen === one){
-        msg.edit({help1 : help2})
-    }else if(chosen === two){
-        msg.edit({help1 : help3});
-    }else if(chosen === thre){
-        msg.edit({help1 : help4});
+// function sleep(ms){
+//     return new Promise(resolve=>{
+//         setTimeout(resolve,ms)
+//     })
+//   }
+
+//    let msg = message.channel.send(help1).then((msg) => {
+//     msg.react(one);
+//     sleep(250);
+//     msg.react(two);
+//     sleep(250);
+//     msg.react(three);
+
+//     const collector = msg.createReactionCollector((reaction, user) => 
+//     user.id !== message.author.id &&
+//     reaction.emoji.name === one ||
+//     reaction.emoji.name === two ||
+//     reaction.emoji.name === three
+//     ("collect", reaction => {
+//     const chosen = reaction.emoji.name;
+//     if(chosen === one){
+//         msg.edit({help1 : help2})
+//     }else if(chosen === two){
+//         msg.edit({help1 : help3});
+//     }else if(chosen === thre){
+//         msg.edit({help1 : help4});
         
-    }else{
-        msg.edit("Canceled.");
-        message.channel.send("Canceled help menu.");
-    }
-    collector.stop();
-}));
-    });
+//     }else{
+//         msg.edit("Canceled.");
+//         message.channel.send("Canceled help menu.");
+//     }
+//     collector.stop();
+// }));
+//     });
 
 
 
@@ -822,6 +822,6 @@ function sleep(ms){
 
 
 
-}
+// }
                        
  });
