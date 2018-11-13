@@ -718,9 +718,7 @@ if(isCommand2('say', message)){
 
       message.delete().catch();
 
-
-      var ins = args.slice(1).then(message.content.includes("yes"));
-      if(!ins) {
+      if(!message.content.includes("yes")) {
       var botmessage = args.slice(1).join(" ")
 
       let embedfour1 = new discord.RichEmbed()
