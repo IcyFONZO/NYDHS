@@ -725,7 +725,7 @@ if(isCommand2('say', message)){
             .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
             .setTimestamp();
 
             message.channel.send(embedfour1)
@@ -737,7 +737,7 @@ if(isCommand2('say', message)){
             .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
             .setTimestamp();
 
             message.channel.send("@here")
