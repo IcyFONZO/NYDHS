@@ -731,7 +731,6 @@ if(isCommand2('say', message)){
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
-            message.channel.send("@here")
             message.channel.send(embedfour1)
 
       }else {
@@ -745,6 +744,7 @@ if(isCommand2('say', message)){
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
+            message.channel.send("@here")
             message.channel.send(embedfour21)
 
       };
