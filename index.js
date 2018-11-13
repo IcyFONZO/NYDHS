@@ -722,8 +722,7 @@ if(isCommand2('say', message)){
       var botmessage = args.slice(1).join(" ")
 
       let embedfour1 = new discord.RichEmbed()
-            .setTitle(`Message From: <@${message.author.id}>`)
-            .setDescription(botmessage)
+            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -735,8 +734,7 @@ if(isCommand2('say', message)){
       var botmessage = args.slice(2).join(" ")
 
       let embedfour21 = new discord.RichEmbed()
-            .setTitle(`Message From: <@${message.author.id}>`)
-            .setDescription(botmessage)
+            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
