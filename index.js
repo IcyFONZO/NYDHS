@@ -716,13 +716,16 @@ if(isCommand2('say', message)){
   if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
       return;
 
-      let botmessage = args.slice(1).join(" ");
       message.delete().catch();
 
-      
+
+      var ins = args.slice(1).then(message.content.includes("yes"));
+      if(!ins) {
+      var botmessage = args.slice(1).join(" ")
+
       let embedfour1 = new discord.RichEmbed()
-            .setTitle(botmessage)
-            .setDescription(`Message From: <@${message.author.id}>`)
+            .setTitle(`Message From: <@${message.author.id}>`)
+            .setDescription(botmessage)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -731,10 +734,21 @@ if(isCommand2('say', message)){
             message.channel.send("@here")
             message.channel.send(embedfour1)
 
-          
-     
-}
+      }else {
+      var botmessage = args.slice(2).join(" ")
 
+      let embedfour21 = new discord.RichEmbed()
+            .setTitle(`Message From: <@${message.author.id}>`)
+            .setDescription(botmessage)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setTimestamp();
+
+            message.channel.send(embedfour21)
+
+      };
+    }
 
 
 
