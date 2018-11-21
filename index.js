@@ -679,9 +679,9 @@ if(isCommand2('accept', message)){
       
       // if(message.author.id !== ("236238325306884096")) return;
     var username = args[1]
-       
-
-          roblox.handleJoinRequest(groupId, username, true)
+    if (username){
+    
+         roblox.handleJoinRequest(groupId, username, true)
           .then(function(promise){
 
             let embedfou22r = new discord.RichEmbed()
@@ -709,10 +709,15 @@ if(isCommand2('accept', message)){
       
 
          
-       
-})
-};
-
+          }).catch(function(err){
+            message.channel.send("Failed to accept. Please try again!")
+          });
+        
+    } else {
+      message.channel.send("Oops! I think you forgot to give me the username.")
+    }
+    return;
+}
 
 
 if(isCommand2('say', message)){
