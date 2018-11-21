@@ -543,10 +543,14 @@ if(isCommand2('Rank', message)){
 
           roblox.setRank(groupId, id, name)
           .then(function(newRole){
+            const newRole = JSON.stringify(newRole)
+            const dataObject = newRole;
+            const rankname12 = dataObject.Name;
+      
 
             let embedfour7 = new discord.RichEmbed()
             .setTitle(`Ranking Notice`)
-            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${JSON.stringify(newRole)}!`)
+            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
