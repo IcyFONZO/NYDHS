@@ -542,11 +542,11 @@ if(isCommand2('Rank', message)){
           
 
           roblox.setRank(groupId, id, name)
-          .then(function(roles){
+          .then(function(newRole){
 
             let embedfour7 = new discord.RichEmbed()
-            .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}!`)
+            .setTitle(`Ranking Notice`)
+            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${newRole}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
@@ -556,8 +556,8 @@ if(isCommand2('Rank', message)){
           message.channel.send(embedfour7);
 
           let embedfour72 = new discord.RichEmbed()
-            .setTitle(`Promotion Notice`)
-            .setDescription(`<@${message.author.id}> has **promoted** ${username}! \n- \nChannel Used: #${message.channel.name}`)
+            .setTitle(`Ranking Notice`)
+            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${newRole}! \n- \nChannel Used: #${message.channel.name}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
