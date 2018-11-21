@@ -543,7 +543,6 @@ if(isCommand2('Rank', message)){
 
           roblox.setRank(groupId, id, name)
           .then(function(newRole){
-            const newRole = JSON.stringify(newRole)
             const dataObject = newRole;
             const rankname12 = dataObject.Name;
       
