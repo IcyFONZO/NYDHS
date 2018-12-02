@@ -101,12 +101,12 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
-      .addField("Link to your log", `${shortUrl}`)
+      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
 
-
+//\n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)
 
 
       message.delete().catch();
@@ -755,7 +755,22 @@ if(isCommand2('say', message)){
     }
 
 
-
+    if(isCommand2('logcount', message)){
+      if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+          return;
+    
+          message.delete().catch();
+    
+            
+        }
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
