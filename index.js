@@ -733,7 +733,7 @@ if(isCommand2('say', message)){
             .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
             message.channel.send(embedfour1)
