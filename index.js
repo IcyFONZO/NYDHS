@@ -106,7 +106,7 @@ client.on("message", message => {
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
 
-// \n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)
+//\n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)
 
 
       message.delete().catch();
@@ -318,10 +318,10 @@ function isCommand2(command, message){
 
 							let embedfour = new discord.RichEmbed()
               .setTitle(`Promotion Notice`)
-              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-              .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
@@ -377,11 +377,11 @@ function isCommand2(command, message){
 						.then(function(roles){
 
 							let embedfo2ur = new discord.RichEmbed()
-              .setTitle(`Demotion Notice`)
-              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+              .setTitle(`Demotion Notice`) 
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-              .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
 							.setTimestamp();
 
 						
@@ -431,10 +431,10 @@ roblox.shout(groupId, shoutMSG)
 
 		let embedsix = new discord.RichEmbed()
 		.setTitle(`Group Shout Notice`)
-    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
@@ -482,10 +482,10 @@ if(isCommand2('Suspend', message)){
 
             let embedfou2r = new discord.RichEmbed()
             .setTitle(`Suspension Notice`)
-            .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -549,10 +549,10 @@ if(isCommand2('Rank', message)){
 
             let embedfour7 = new discord.RichEmbed()
             .setTitle(`Ranking Notice`)
-            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}!`)
+            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -599,7 +599,7 @@ if(isCommand('rankhelp', message)){
             .addField("Lieutenant - 85 \nSergeant - 80 \nCorporal - 75 \nSpecial Response Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
             message.reply().then(msg => {msg.delete[9000]});
@@ -634,10 +634,10 @@ if(isCommand2('exile', message)){
 
             let embedfou22r = new discord.RichEmbed()
             .setTitle(`Termination Notice`)
-            .setDescription(`<@${message.author.id}> has **terminated** ${username}!`)
+            .setDescription(`<@${message.author.id}> has **terminated** ${username}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -689,7 +689,7 @@ if(isCommand2('accept', message)){
             .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
             .setTimestamp();
 
           
@@ -730,10 +730,10 @@ if(isCommand2('say', message)){
       var botmessage = args.slice(1).join(" ")
 
       let embedfour1 = new discord.RichEmbed()
-            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
+            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! https://www.patreon.com/coolguzman11")
+            .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
             .setTimestamp();
 
             message.channel.send(embedfour1)
