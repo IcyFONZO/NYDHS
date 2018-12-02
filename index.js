@@ -106,12 +106,12 @@ client.on("message", message => {
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
 
-//\n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)
+// \n \n***Like the NYDHS Automated System? Have some spare bucks? Become a Patron!*** [Click here to learn more](https://www.patreon.com/coolguzman11)
 
 
       message.delete().catch();
-      message.reply().then(msg => {msg.delete(12000)})
-      message.channel.send(ssEmbed).then(msg => {msg.delete(12000)})
+      message.reply().then(msg => {msg.delete(15000)})
+      message.channel.send(ssEmbed).then(msg => {msg.delete(15000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
@@ -132,14 +132,14 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Special Response Team** Trello list.")
-      .addField("Link to your log", `${shortUrl}`)
+      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
   
       message.delete().catch();
-      message.reply().then(msg => {msg.delete(12000)})
-     message.channel.send(srtEmbed).then(msg => {msg.delete(12000)})
+      message.reply().then(msg => {msg.delete(15000)})
+     message.channel.send(srtEmbed).then(msg => {msg.delete(15000)})
       
     }).catch((err) => {
       console.log(`FAILED!: ${err}`);
@@ -161,14 +161,14 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Federal Protective Service** Trello list.")
-      .addField("Link to your log", `${shortUrl}`)
+      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
         
         message.delete().catch();
-        message.reply().then(msg => {msg.delete(12000)})
-        message.channel.send(fpsEmbed).then(msg => {msg.delete(12000)})
+        message.reply().then(msg => {msg.delete(15000)})
+        message.channel.send(fpsEmbed).then(msg => {msg.delete(15000)})
             
         }).catch((err) => {
           console.log(`FAILED!: ${err}`);
@@ -191,7 +191,7 @@ client.on("message", message => {
             .setColor("#3465ed")
             .setTitle("Patrol Log Successfully Uploaded!")
             .setDescription("Your log was uploaded to the **Intelligence Office** Trello list.")
-            .addField("Link to your log", `${shortUrl}`)
+            .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter(message.author.username, message.author.displayAvatarURL)
             .setTimestamp();
@@ -199,8 +199,8 @@ client.on("message", message => {
             
         //Intelligence Office
             message.delete().catch();
-            message.reply().then(msg => {msg.delete(12000)})
-           message.channel.send(hsiEmbed).then(msg => {msg.delete(12000)})
+            message.reply().then(msg => {msg.delete(15000)})
+           message.channel.send(hsiEmbed).then(msg => {msg.delete(15000)})
             
           }).catch((err) => {
             console.log(`FAILED!: ${err}`);
@@ -240,14 +240,14 @@ client.on("message", message => {
         .setColor("#3465ed")
         .setTitle("Inactivity Notice was Successfully Uploaded!")
         .setDescription("Your notice was uploaded to the **Inactivity Notice** Trello list.")
-        .addField("Link to your notice", `${shortUrl}`)
+        .addField("Link to your notice", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
         .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
         .setFooter(message.author.username, message.author.displayAvatarURL)
         .setTimestamp();
     
         message.delete().catch();
-        message.reply().then(msg => {msg.delete(12000)})
-       message.channel.send(hEmbed).then(msg => {msg.delete(12000)})
+        message.reply().then(msg => {msg.delete(15000)})
+       message.channel.send(hEmbed).then(msg => {msg.delete(15000)})
         
       }).catch((err) => {
         console.log(`FAILED!: ${err}`);
@@ -321,7 +321,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
 							.setTimestamp();
 
 						
@@ -381,7 +381,7 @@ function isCommand2(command, message){
               .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 							.setColor("#3465ed")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+							.setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
 							.setTimestamp();
 
 						
@@ -434,7 +434,7 @@ roblox.shout(groupId, shoutMSG)
     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
     .setColor("#3465ed")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+    .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
     .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
@@ -485,7 +485,7 @@ if(isCommand2('Suspend', message)){
             .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
           
@@ -552,7 +552,7 @@ if(isCommand2('Rank', message)){
             .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
           
@@ -599,7 +599,7 @@ if(isCommand('rankhelp', message)){
             .addField("Lieutenant - 85 \nSergeant - 80 \nCorporal - 75 \nSpecial Response Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
             message.reply().then(msg => {msg.delete[9000]});
@@ -637,7 +637,7 @@ if(isCommand2('exile', message)){
             .setDescription(`<@${message.author.id}> has **terminated** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
           
@@ -689,7 +689,7 @@ if(isCommand2('accept', message)){
             .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
+            .setFooter("Like the NYDHS Automated System? Have some spare bucks? Become a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)")
             .setTimestamp();
 
           
