@@ -101,7 +101,7 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
-      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today!*** [Click here to learn more](https://www.patreon.com/coolguzman11)`)
+      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today!***  [Click here to learn more](https://www.patreon.com/coolguzman11)`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
