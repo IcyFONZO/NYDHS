@@ -730,7 +730,7 @@ if(isCommand2('say', message)){
       var botmessage = args.slice(1).join(" ")
 
       let embedfour1 = new discord.RichEmbed()
-            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! - ***  [ [Click here to learn more]](https://www.patreon.com/coolguzman11)`)
+            .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
