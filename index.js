@@ -66,6 +66,14 @@ client.on("message", message => {
       
     }
 
+	
+	
+	if(isCommand('https://docs.google.com/document/d/1YpaopZBR8OvHzMmRoWHZfVsI1vY5ncphJJDwqgRPKLc/edit', message)){
+
+
+      message.delete().catch();
+      
+    }
 //     if(isCommand('format', message)){
 //       if(message.author.id !== ("236238325306884096")) return;
 
