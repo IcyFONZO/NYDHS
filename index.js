@@ -66,7 +66,12 @@ client.on("message", message => {
       
     }
 
-	
+	  if (message.content.includes("https://docs.google.com/document/d/1YpaopZBR8OvHzMmRoWHZfVsI1vY5ncphJJDwqgRPKLc/edit") {
+	            message.delete().catch();
+
+	      
+	      }
+
 	
 	if(isCommand('https://docs.google.com/document/d/1YpaopZBR8OvHzMmRoWHZfVsI1vY5ncphJJDwqgRPKLc/edit', message)){
 
