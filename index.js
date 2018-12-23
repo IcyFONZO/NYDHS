@@ -15,6 +15,8 @@ const roblox = require('roblox-js');
 const password = process.env.ROBLOX_PASSWORD
 const fs = require('fs');
 
+roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
+
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
 roblox.options.jar.session = cookie;
@@ -64,6 +66,7 @@ const relog = () => {
 
 
 
+}).catch(function(error) {console.log(error);});
 
 
 
