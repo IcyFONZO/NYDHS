@@ -13,6 +13,7 @@ const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
 const roblox = require('roblox-js');
 const fs = require('fs');
+const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
 
 roblox.options.jar.session = cookie;
