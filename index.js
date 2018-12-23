@@ -377,9 +377,9 @@ function isCommand2(command, message){
     	var username = args[1]
     	if (username){
 			
-    		roblox.getIdFromUsername(username)
+    		rbx.getIdFromUsername(username)
 			.then(function(id){
-				roblox.getRankInGroup(groupId, id)
+				rbx.getRankInGroup(groupId, id)
 				.then(function(rank){
 					if(maximumRank <= rank){
 
@@ -387,7 +387,7 @@ function isCommand2(command, message){
 					
 					} else {
 
-						roblox.promote(groupId, id)
+						rbx.promote(groupId, id)
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
@@ -437,9 +437,9 @@ function isCommand2(command, message){
     	var username = args[1]
     	if (username){
 			
-    		roblox.getIdFromUsername(username)
+    		rbx.getIdFromUsername(username)
 			.then(function(id){
-				roblox.getRankInGroup(groupId, id)
+				rbx.getRankInGroup(groupId, id)
 				.then(function(rank){
 					if(maximumRank <= rank){
 
@@ -447,7 +447,7 @@ function isCommand2(command, message){
 					
 					} else {
 
-						roblox.demote(groupId, id)
+						rbx.demote(groupId, id)
 						.then(function(roles){
 
 							let embedfo2ur = new discord.RichEmbed()
@@ -500,7 +500,7 @@ if(isCommand2(`Shout`, message)){
 }
 const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
 
-roblox.shout(groupId, shoutMSG)
+rbx.shout(groupId, shoutMSG)
 	.then(function() {
 
 		let embedsix = new discord.RichEmbed()
@@ -540,9 +540,9 @@ if(isCommand2('Suspend', message)){
     var username = args[1]
     if (username){
     
-      roblox.getIdFromUsername(username)
+      rbx.getIdFromUsername(username)
     .then(function(id){
-      roblox.getRankInGroup(groupId, id)
+      rbx.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -551,7 +551,7 @@ if(isCommand2('Suspend', message)){
         } else {
           let roleset= 10;
 
-          roblox.setRank(groupId, id, roleset)
+          rbx.setRank(groupId, id, roleset)
           .then(function(roles){
 
             let embedfou2r = new discord.RichEmbed()
@@ -604,9 +604,9 @@ if(isCommand2('Rank', message)){
     var name = parseInt(args[2])
     if (username){
     
-      roblox.getIdFromUsername(username)
+      rbx.getIdFromUsername(username)
     .then(function(id){
-      roblox.getRankInGroup(groupId, id)
+      rbx.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -615,7 +615,7 @@ if(isCommand2('Rank', message)){
         } else {
           
 
-          roblox.setRank(groupId, id, name)
+          rbx.setRank(groupId, id, name)
           .then(function(newRole){
             const dataObject = newRole;
             const rankname12 = dataObject.Name;
@@ -692,9 +692,9 @@ if(isCommand2('exile', message)){
     var username = args[1]
     if (username){
     
-      roblox.getIdFromUsername(username)
+      rbx.getIdFromUsername(username)
     .then(function(id){
-      roblox.getRankInGroup(groupId, id)
+      rbx.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -703,7 +703,7 @@ if(isCommand2('exile', message)){
         } else {
        
 
-          roblox.exile(groupId, id)
+          rbx.exile(groupId, id)
           .then(function(roles){
 
             let embedfou22r = new discord.RichEmbed()
@@ -755,7 +755,7 @@ if(isCommand2('accept', message)){
     var username = args[1]
     if (username){
     
-         roblox.handleJoinRequest(groupId, username, true)
+         rbx.handleJoinRequest(groupId, username, true)
           .then(function(promise){
 
             let embedfou22r = new discord.RichEmbed()
