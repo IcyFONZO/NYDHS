@@ -11,54 +11,6 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const rbx = require('roblox-js');
-const fs = require('fs');
-
-const cookieFile = './cookie';
-const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
-rbx.options.jar.session = cookie;
-const relog = () => {
-  return rbx.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
-    .then((ver) => {
-      return rbx.getGeneralToken().then((token) => {
-        return rbx.http({
-          url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
-          options: {
-            method: 'POST',
-            resolveWithFullResponse: true,
-            verification: ver.header,
-            jar: null,
-            headers: {
-              'X-CSRF-TOKEN': token
-            },
-            form: {
-              __RequestVerificationToken: ver.inputs.__RequestVerificationToken
-            }
-          }
-        }).then((res) => {
-          console.log(res.statusCode);
-          console.log(res.body);
-          var cookies = res.headers['set-cookie'];
-          if (cookies) {
-            rbx.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
-            fs.writeFile(cookieFile, JSON.stringify({cookie: rbx.options.jar.session}), (err) => {
-              if (err) {
-                console.error('Failed to write cookie');
-              }
-            });
-          }
-        });
-      });
-    });
-};
-
-(async () => {
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
-  await relog();
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
-})();
 
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
@@ -331,6 +283,60 @@ client.on("message", message => {
     message.delete().catch();
     
   }
+
+  const rbx = require('roblox-js');
+  const fs = require('fs');
+  
+  const cookieFile = './cookie';
+  const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
+  rbx.options.jar.session = cookie;
+  const relog = () => {
+    return rbx.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+      .then((ver) => {
+        return rbx.getGeneralToken().then((token) => {
+          return rbx.http({
+            url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
+            options: {
+              method: 'POST',
+              resolveWithFullResponse: true,
+              verification: ver.header,
+              jar: null,
+              headers: {
+                'X-CSRF-TOKEN': token
+              },
+              form: {
+                __RequestVerificationToken: ver.inputs.__RequestVerificationToken
+              }
+            }
+          }).then((res) => {
+            console.log(res.statusCode);
+            console.log(res.body);
+            var cookies = res.headers['set-cookie'];
+            if (cookies) {
+              rbx.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
+              fs.writeFile(cookieFile, JSON.stringify({cookie: rbx.options.jar.session}), (err) => {
+                if (err) {
+                  console.error('Failed to write cookie');
+                }
+              });
+            }
+          });
+        });
+      });
+  };
+  
+  (async () => {
+    console.log('...' + rbx.options.jar.session.substr(-20));
+    console.log(await rbx.getCurrentUser());
+    await relog();
+    console.log('...' + rbx.options.jar.session.substr(-20));
+    console.log(await rbx.getCurrentUser());
+  })();
+  
+
+
+
+
 
   var prefix = '.';
   var groupId = 3632026;
