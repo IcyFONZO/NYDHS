@@ -12,10 +12,7 @@ const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
 const roblox = require('roblox-js');
-const password = process.env.ROBLOX_PASSWORD
 const fs = require('fs');
-
-roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
 
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
@@ -62,11 +59,6 @@ const relog = () => {
   console.log('...' + roblox.options.jar.session.substr(-20));
   console.log(await roblox.getCurrentUser());
 })();
-
-
-
-
-}).catch(function(error) {console.log(error);});
 
 
 
