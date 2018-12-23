@@ -11,17 +11,17 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const roblox = require('noblox.js');
+const rbx = require('roblox-js');
 const fs = require('fs');
+
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
-
-roblox.options.jar.session = cookie;
+rbx.options.jar.session = cookie;
 const relog = () => {
-  return roblox.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+  return rbx.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
     .then((ver) => {
-      return roblox.getGeneralToken().then((token) => {
-        return roblox.http({
+      return rbx.getGeneralToken().then((token) => {
+        return rbx.http({
           url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
           options: {
             method: 'POST',
@@ -40,8 +40,8 @@ const relog = () => {
           console.log(res.body);
           var cookies = res.headers['set-cookie'];
           if (cookies) {
-            roblox.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
-            fs.writeFile(cookieFile, JSON.stringify({cookie: roblox.options.jar.session}), (err) => {
+            rbx.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
+            fs.writeFile(cookieFile, JSON.stringify({cookie: rbx.options.jar.session}), (err) => {
               if (err) {
                 console.error('Failed to write cookie');
               }
@@ -53,15 +53,12 @@ const relog = () => {
 };
 
 (async () => {
-  console.log('...' + roblox.options.jar.session.substr(-20));
-  console.log(await roblox.getCurrentUser());
+  console.log('...' + rbx.options.jar.session.substr(-20));
+  console.log(await rbx.getCurrentUser());
   await relog();
-  console.log('...' + roblox.options.jar.session.substr(-20));
-  console.log(await roblox.getCurrentUser());
+  console.log('...' + rbx.options.jar.session.substr(-20));
+  console.log(await rbx.getCurrentUser());
 })();
-
-
-
 
 
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
