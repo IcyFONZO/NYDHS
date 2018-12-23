@@ -17,12 +17,12 @@ const fs = require('fs');
 
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
-rbx.options.jar.session = cookie;
+roblox.options.jar.session = cookie;
 const relog = () => {
-  return rbx.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+  return roblox.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
     .then((ver) => {
-      return rbx.getGeneralToken().then((token) => {
-        return rbx.http({
+      return roblox.getGeneralToken().then((token) => {
+        return roblox.http({
           url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
           options: {
             method: 'POST',
@@ -41,8 +41,8 @@ const relog = () => {
           console.log(res.body);
           var cookies = res.headers['set-cookie'];
           if (cookies) {
-            rbx.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
-            fs.writeFile(cookieFile, JSON.stringify({cookie: rbx.options.jar.session}), (err) => {
+            roblox.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
+            fs.writeFile(cookieFile, JSON.stringify({cookie: roblox.options.jar.session}), (err) => {
               if (err) {
                 console.error('Failed to write cookie');
               }
@@ -54,11 +54,11 @@ const relog = () => {
 };
 
 (async () => {
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
   await relog();
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
 })();
 
 
