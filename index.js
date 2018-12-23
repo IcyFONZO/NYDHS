@@ -63,9 +63,7 @@ const relog = () => {
 
 
 
-roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
 
-}).catch(function(error) {console.log(error);});
 
 
 
