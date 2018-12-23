@@ -11,11 +11,11 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const roblox = require('roblox-js');
+const roblox = require('noblox.js');
 const fs = require('fs');
-
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
+
 roblox.options.jar.session = cookie;
 const relog = () => {
   return roblox.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
