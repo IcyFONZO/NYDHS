@@ -11,7 +11,7 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const roblox = require('noblox.js');
+const roblox = require('roblox-js');
 const password = process.env.ROBLOX_PASSWORD
 
 roblox.login({username: "NYDHS_BOT", password: password}).then((success) => {
