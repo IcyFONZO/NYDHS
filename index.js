@@ -11,20 +11,18 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
-const rbx = require('roblox-js');
+const roblox = require('roblox-js');
 const fs = require('fs');
-
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
-rbx.options.jar.session = cookie;
-const relog = (cookie) => {
-  if (!cookie) throw new Error('no cookie supplied?')
-  options.jar.session = cookie
-  return getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+
+roblox.options.jar.session = cookie;
+
+const relog = () => {
+  return roblox.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
     .then((ver) => {
-      if (!ver.header) console.log(`Bad cookie.`)
-      return getGeneralToken({}).then((token) => {
-        return http({
+      return roblox.getGeneralToken().then((token) => {
+        return roblox.http({
           url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
           options: {
             method: 'POST',
@@ -39,50 +37,38 @@ const relog = (cookie) => {
             }
           }
         }).then((res) => {
-          var cookies = res.headers['set-cookie']
+          console.log(res.statusCode);
+          console.log(res.body);
+          var cookies = res.headers['set-cookie'];
           if (cookies) {
-            options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1]
-
-            fs.writeFile(cookieFile, JSON.stringify({cookie: options.jar.session, time: Date.now()}), (err) => {
+            roblox.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
+            fs.writeFile(cookieFile, JSON.stringify({cookie: roblox.options.jar.session}), (err) => {
               if (err) {
-                console.error('Failed to write cookie')
+                console.error('Failed to write cookie');
               }
-              return true
-            })
+            });
           }
-        })
-      })
-    })
-}
-module.exports = c
+        });
+      });
+    });
+};
 
-async function c (cookie) {
-  // Check for file
-  if (fs.existsSync(cookieFile)) {
-    var json = JSON.parse(fs.readFileSync(cookieFile))
+(async () => {
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
+  await relog();
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
+})();
 
-    // Check its new enough
-    if (json.time + day > Date.now()) {
-      // Its recent enough. Try it.
-      try {
-        await relog(json.cookie)
-        return getCurrentUser({})
-      } catch (e) {
-        console.log(`Stored relog failed. Trying with given.`)
-      }
-    }
-  }
-  if (cookie) {
-    // Try the user's cookie
-    try {
-      await relog(cookie)
-      return getCurrentUser({})
-    } catch (e) {
-      console.error(e)
-    }
-  }
-  throw new Error('No cookie supplied and no cookie file available.')
-}
+
+
+
+
+
+
+
+
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
@@ -377,9 +363,9 @@ function isCommand2(command, message){
     	var username = args[1]
     	if (username){
 			
-    		rbx.getIdFromUsername(username)
+    		roblox.getIdFromUsername(username)
 			.then(function(id){
-				rbx.getRankInGroup(groupId, id)
+				roblox.getRankInGroup(groupId, id)
 				.then(function(rank){
 					if(maximumRank <= rank){
 
@@ -387,7 +373,7 @@ function isCommand2(command, message){
 					
 					} else {
 
-						rbx.promote(groupId, id)
+						roblox.promote(groupId, id)
 						.then(function(roles){
 
 							let embedfour = new discord.RichEmbed()
@@ -437,9 +423,9 @@ function isCommand2(command, message){
     	var username = args[1]
     	if (username){
 			
-    		rbx.getIdFromUsername(username)
+    		roblox.getIdFromUsername(username)
 			.then(function(id){
-				rbx.getRankInGroup(groupId, id)
+				roblox.getRankInGroup(groupId, id)
 				.then(function(rank){
 					if(maximumRank <= rank){
 
@@ -447,7 +433,7 @@ function isCommand2(command, message){
 					
 					} else {
 
-						rbx.demote(groupId, id)
+						roblox.demote(groupId, id)
 						.then(function(roles){
 
 							let embedfo2ur = new discord.RichEmbed()
@@ -500,7 +486,7 @@ if(isCommand2(`Shout`, message)){
 }
 const shoutMSG = args.slice(1).join(" "); // Joins the arguments minus prefix to form the message to be shouted
 
-rbx.shout(groupId, shoutMSG)
+roblox.shout(groupId, shoutMSG)
 	.then(function() {
 
 		let embedsix = new discord.RichEmbed()
@@ -540,9 +526,9 @@ if(isCommand2('Suspend', message)){
     var username = args[1]
     if (username){
     
-      rbx.getIdFromUsername(username)
+      roblox.getIdFromUsername(username)
     .then(function(id){
-      rbx.getRankInGroup(groupId, id)
+      roblox.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -551,7 +537,7 @@ if(isCommand2('Suspend', message)){
         } else {
           let roleset= 10;
 
-          rbx.setRank(groupId, id, roleset)
+          roblox.setRank(groupId, id, roleset)
           .then(function(roles){
 
             let embedfou2r = new discord.RichEmbed()
@@ -604,9 +590,9 @@ if(isCommand2('Rank', message)){
     var name = parseInt(args[2])
     if (username){
     
-      rbx.getIdFromUsername(username)
+      roblox.getIdFromUsername(username)
     .then(function(id){
-      rbx.getRankInGroup(groupId, id)
+      roblox.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -615,7 +601,7 @@ if(isCommand2('Rank', message)){
         } else {
           
 
-          rbx.setRank(groupId, id, name)
+          roblox.setRank(groupId, id, name)
           .then(function(newRole){
             const dataObject = newRole;
             const rankname12 = dataObject.Name;
@@ -692,9 +678,9 @@ if(isCommand2('exile', message)){
     var username = args[1]
     if (username){
     
-      rbx.getIdFromUsername(username)
+      roblox.getIdFromUsername(username)
     .then(function(id){
-      rbx.getRankInGroup(groupId, id)
+      roblox.getRankInGroup(groupId, id)
       .then(function(rank){
         if(maximumRank <= rank){
 
@@ -703,7 +689,7 @@ if(isCommand2('exile', message)){
         } else {
        
 
-          rbx.exile(groupId, id)
+          roblox.exile(groupId, id)
           .then(function(roles){
 
             let embedfou22r = new discord.RichEmbed()
@@ -755,7 +741,7 @@ if(isCommand2('accept', message)){
     var username = args[1]
     if (username){
     
-         rbx.handleJoinRequest(groupId, username, true)
+         roblox.handleJoinRequest(groupId, username, true)
           .then(function(promise){
 
             let embedfou22r = new discord.RichEmbed()
