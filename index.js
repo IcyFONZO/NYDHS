@@ -17,11 +17,14 @@ const fs = require('fs');
 const cookieFile = './cookie';
 const cookie = JSON.parse(fs.readFileSync(cookieFile)).cookie;
 rbx.options.jar.session = cookie;
-const relog = () => {
-  return rbx.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+const relog = (cookie) => {
+  if (!cookie) throw new Error('no cookie supplied?')
+  options.jar.session = cookie
+  return getVerification({url: 'https://www.roblox.com/my/account#!/security'})
     .then((ver) => {
-      return rbx.getGeneralToken().then((token) => {
-        return rbx.http({
+      if (!ver.header) console.log(`Bad cookie.`)
+      return getGeneralToken({}).then((token) => {
+        return http({
           url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
           options: {
             method: 'POST',
@@ -36,33 +39,50 @@ const relog = () => {
             }
           }
         }).then((res) => {
-          console.log(res.statusCode);
-          console.log(res.body);
-          var cookies = res.headers['set-cookie'];
+          var cookies = res.headers['set-cookie']
           if (cookies) {
-            rbx.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
-            fs.writeFile(cookieFile, JSON.stringify({cookie: rbx.options.jar.session}), (err) => {
+            options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1]
+
+            fs.writeFile(cookieFile, JSON.stringify({cookie: options.jar.session, time: Date.now()}), (err) => {
               if (err) {
-                console.error('Failed to write cookie');
+                console.error('Failed to write cookie')
               }
-            });
+              return true
+            })
           }
-        });
-      });
-    });
-};
+        })
+      })
+    })
+}
+module.exports = c
 
-(async () => {
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
-  await relog();
-  console.log('...' + rbx.options.jar.session.substr(-20));
-  console.log(await rbx.getCurrentUser());
-})();
+async function c (cookie) {
+  // Check for file
+  if (fs.existsSync(cookieFile)) {
+    var json = JSON.parse(fs.readFileSync(cookieFile))
 
-
-
-
+    // Check its new enough
+    if (json.time + day > Date.now()) {
+      // Its recent enough. Try it.
+      try {
+        await relog(json.cookie)
+        return getCurrentUser({})
+      } catch (e) {
+        console.log(`Stored relog failed. Trying with given.`)
+      }
+    }
+  }
+  if (cookie) {
+    // Try the user's cookie
+    try {
+      await relog(cookie)
+      return getCurrentUser({})
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  throw new Error('No cookie supplied and no cookie file available.')
+}
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
