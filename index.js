@@ -41,11 +41,6 @@ const relog = () => {
           var cookies = res.headers['set-cookie'];
           if (cookies) {
             roblox.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
-            fs.writeFile(cookieFile, JSON.stringify({cookie: roblox.options.jar.session}), (err) => {
-              if (err) {
-                console.error('Failed to write cookie');
-              }
-            });
           }
         });
       });
