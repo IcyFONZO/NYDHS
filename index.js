@@ -12,7 +12,6 @@ const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
 const roblox = require('roblox-js');
-const fs = require('fs');
 const cookie = process.env.cookie;
 
 roblox.options.jar.session = cookie;
@@ -107,42 +106,29 @@ client.on("message", message => {
       
     }
 
-	  if(message.content.includes("https://docs.google.com/document/d/1YpaopZBR8OvHzMmRoWHZfVsI1vY5ncphJJDwqgRPKLc/edit")){
-	       message.delete().catch();
-
-	      
-	      }
-
-	
-	if(isCommand('https://docs.google.com/document/d/1YpaopZBR8OvHzMmRoWHZfVsI1vY5ncphJJDwqgRPKLc/edit', message)){
+    if(isCommand('format', message)){
+      if(message.author.id !== ("236238325306884096")) return;
 
 
       message.delete().catch();
+//**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST
+      let raskj6 = new discord.RichEmbed()
+      .setTitle("Patrol Log Format")
+      .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
+      .addField("Username: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", "**About NYDHS Discord Bot**\n • Links will **ONLY** be accepted for patrol screenshots. \n• If you do not receive a confirmation message, that means your log was **NOT** uploaded to the Trello and you need to try again and make sure you are using the correct format. \n • The format **ONLY** has to be in the order provided, capitalization will not affect the logging process. \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+
+      message.channel.send(raskj6);
       
     }
-//     if(isCommand('format', message)){
-//       if(message.author.id !== ("236238325306884096")) return;
-
-
-//       message.delete().catch();
-// //**Example:** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST
-//       let raskj6 = new discord.RichEmbed()
-//       .setTitle("Patrol Log Format")
-//       .setDescription("The following format **MUST** be followed in-order for your Patrol Log to be logged into the Trello.")
-//       .addField("  Division: \nUsername: \nPatrol Screenshot: \nDate: \nStart Time: \nEnd Time:", " \n**Patrol Log Example** \nDivision: FPS \nUsername: coolguzman11 \nPatrol Screenshot: https://www.tenor.co/xmGV.gif \nDate: 09/19/2018 \nStart Time: 9:00am EST \nEnd Time: 10:00am EST \n**About NYDHS Discord Bot**\n• Keep in mind, division abbreviations **MUST** be used [SS, FPS, SRT, HSI]. \n • Links will **ONLY** be accepted for patrol screenshots. \n• If you do not receive a confirmation message, that means your log was **NOT** uploaded to the Trello and you need to try again and make sure you are using the correct format. \n • The format **ONLY** has to be in the order provided, capitalization will not affect the logging process.")
-//       .setColor("#ccccdd")
-//       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-
-//       message.channel.send(raskj6);
-      
-//     }
 
   
 
     if (message.channel.id === discordChannelID) {
 
     //SS
-    if(isCommand('Division: SS', message)){ 
+		if(message.member.roles.some(r=>["Secret Service"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       
@@ -155,7 +141,7 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Secret Service** Trello list.")
-      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+      .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
@@ -173,7 +159,7 @@ client.on("message", message => {
     });
   }
     //SRT
-    if(isCommand('Division: SRT', message)){ 
+		if(message.member.roles.some(r=>["Special Response Team"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
     
     const postTrello = require("./lib/trello/post_trello_SRT");
        
@@ -186,7 +172,7 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Special Response Team** Trello list.")
-      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+      .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
@@ -201,7 +187,7 @@ client.on("message", message => {
     }
       
     //FPS
-    if(isCommand('Division: FPS', message)){ 
+		if(message.member.roles.some(r=>["Federal Protective Service"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
     	
       
       const postTrello = require("./lib/trello/post_trello_FPS");
@@ -215,7 +201,7 @@ client.on("message", message => {
       .setColor("#3465ed")
       .setTitle("Patrol Log Successfully Uploaded!")
       .setDescription("Your log was uploaded to the **Federal Protective Service** Trello list.")
-      .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+      .addField("Link to your log", `${shortUrl}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
       .setFooter(message.author.username, message.author.displayAvatarURL)
       .setTimestamp();
@@ -231,7 +217,7 @@ client.on("message", message => {
 
 
       //HSI
-      if(isCommand('Division: HSI', message)){ 
+      if(message.member.roles.some(r=>["Homeland Security Investigations"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
     	
           
           const postTrello = require("./lib/trello/post_trello_HSI");
@@ -245,7 +231,7 @@ client.on("message", message => {
             .setColor("#3465ed")
             .setTitle("Patrol Log Successfully Uploaded!")
             .setDescription("Your log was uploaded to the **Intelligence Office** Trello list.")
-            .addField("Link to your log", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+            .addField("Link to your log", `${shortUrl}`)
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
             .setFooter(message.author.username, message.author.displayAvatarURL)
             .setTimestamp();
@@ -264,22 +250,22 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
 
-    // if(isCommand('formatinac', message)){
-    //   if(message.author.id !== ("236238325306884096")) return;
+    if(isCommand('inac', message)){
+      if(message.author.id !== ("236238325306884096")) return;
 
 
-    //   message.delete().catch();
+      message.delete().catch();
 
-    //   let raskj64 = new discord.RichEmbed()
-    //   .setTitle("Inactivity Notice Format")
-    //   .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
-    //   .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process.")
-    //   .setColor("#ccccdd")
-    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      let raskj64 = new discord.RichEmbed()
+      .setTitle("Inactivity Notice Format")
+      .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
+      .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process. \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
-    //   message.channel.send(raskj64);
+      message.channel.send(raskj64);
       
-    // }
+    }
     if(isCommand('Username:', message)){ 
     	
       console.log("gatcha!");
@@ -294,7 +280,7 @@ client.on("message", message => {
         .setColor("#3465ed")
         .setTitle("Inactivity Notice was Successfully Uploaded!")
         .setDescription("Your notice was uploaded to the **Inactivity Notice** Trello list.")
-        .addField("Link to your notice", `${shortUrl} \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+        .addField("Link to your notice", `${shortUrl}`)
         .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
         .setFooter(message.author.username, message.author.displayAvatarURL)
         .setTimestamp();
@@ -312,22 +298,22 @@ client.on("message", message => {
   if(message.author.bot) return;
   if (message.channel.id === discordComplaints) {
 
-    // if(isCommand('formatcom', message)){
-    //   if(message.author.id !== ("236238325306884096")) return;
+    if(isCommand('com', message)){
+      if(message.author.id !== ("236238325306884096")) return;
 
 
-    //   message.delete().catch();
+      message.delete().catch();
 
-    //   let raskj654 = new discord.RichEmbed()
-    //   .setTitle("Complaint Format")
-    //   .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
-    //   .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** All Complaints are reviewed thoroughly by the Homeland Security Investigations Department.")
-    //   .setColor("#ccccdd")
-    //   .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+      let raskj654 = new discord.RichEmbed()
+      .setTitle("Complaint Format")
+      .setDescription("The following format **MUST** be followed in-order for your complaint not to be automatically deleted.")
+      .addField("Username: \nRank: \nReason: \nEvidence: \nWitnesses: \nNotes:", "**Please Note:** All Complaints are reviewed thoroughly by the Homeland Security Investigations Department. \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
+      .setColor("#ccccdd")
+      .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
-    //   message.channel.send(raskj654);
+      message.channel.send(raskj654);
       
-    // }
+    }
     if (message.content.startsWith("Username:")) return;
 
     message.delete().catch();
@@ -348,9 +334,8 @@ function isCommand2(command, message){
  
 	var args = message.content.split(/[ ]+/)
 
-  
   if(isCommand2('Promote', message)){
-		if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
+		if(!message.member.roles.some(r=>["NYDHS Maintenance" ,"Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
         return;
         
         // if(message.author.id !== ("236238325306884096")) return;
@@ -363,52 +348,102 @@ function isCommand2(command, message){
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply("Oops! Seems like that rank is to high!")
+            let embederror1 = new discord.RichEmbed()
+            .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+            .setDescription("-> **Error**: It seems like the person you tried to promote has a too high of a rank! ")
+            .setColor("#ef3939")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+
+
+						message.channel.send(embederror1);
 					
 					} else {
 
 						roblox.promote(groupId, id)
 						.then(function(roles){
 
-							let embedfour = new discord.RichEmbed()
-              .setTitle(`Promotion Notice`)
-              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
-							.setColor("#3465ed")
+							let embedfo2ur = new discord.RichEmbed()
+              .setTitle(`Promotion Notice`) 
+              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#ccccdd")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-							.setTimestamp();
-
 						
-            message.channel.send(embedfour);
-            console.log(`${username} was promoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+						
+            message.channel.send(embedfo2ur);
 
-            let embedfourB = new discord.RichEmbed()
-              .setTitle(`Promotion Notice`)
-              .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: #${message.channel.name}`)
-							.setColor("#3465ed")
-              .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-              .setFooter(`This is an automated messages in-responds to a successful promotion.`)
-              .setTimestamp();
+            let embedfourBA = new discord.RichEmbed()
+            .setTitle(`Promotion Notice`)
+            .setDescription(`<@${message.author.id}> has **promoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n- \nChannel Used: #${message.channel.name}`)
+            .setColor("#3465ed")
+            .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
+            .setFooter(`This is an automated messages in-responds to a successful promotion.`)
+            .setTimestamp();
 
-              client.guilds.get("490607262188961822").channels.get("504770196825702403").send(embedfourB);
+              client.guilds.get("490607262188961822").channels.get("504770196825702403").send(embedfourBA);
 
            
 						}).catch(function(err){
-							console.log(err);
+
+              client.users.get("236238325306884096").send(err);
+
+              let embederror12 = new discord.RichEmbed()
+              .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+              .setDescription("-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+              .setColor("#ef3939")
+              .setFooter(message.author.username, message.author.displayAvatarURL)
+              .setTimestamp();
+  
+  
+              message.channel.send(embederror12);
+            
 						});
 					}
 				}).catch(function(err){
-					message.channel.send("Couldn't find them! Please try again!")
+
+          client.users.get("236238325306884096").send(err);
+
+          let embederror122 = new discord.RichEmbed()
+          .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+          .setDescription("-> **Error**: It seems like I can't find them in Roblox! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+          .setColor("#ef3939")
+          .setFooter(message.author.username, message.author.displayAvatarURL)
+          .setTimestamp();
+
+
+          message.channel.send(embederror122);
+        
 				});
 			}).catch(function(err){ 
-				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+        client.users.get("236238325306884096").send(err);
+
+        let embederror12 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription(`-> **Error**: It seems like ${username} isn't in the NYDHS Roblox group! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.`)
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror12);
+      
 			});
     	} else {
-    		message.channel.send("Oops! I think you forgot to give me the username.")
+
+        let embederror123 = new discord.RichEmbed()
+        .setTitle("Help Menu | Command: .promote")
+        .setColor("#ccccdd")
+        .addField("Description", "Promotes a user by one rank.", true)
+        .addField("Usage", ".promote [Roblox username]", true)
+        .addField("Example", ".promote Nettykeepers", true)
+
+      
+
+
+        message.channel.send(embederror123);
     	}
     	return;
 	}
-	
 	if(isCommand2('Demote', message)){
 		if(!message.member.roles.some(r=>["NYDHS Maintenance" ,"Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
         return;
@@ -423,7 +458,15 @@ function isCommand2(command, message){
 				.then(function(rank){
 					if(maximumRank <= rank){
 
-						message.reply("Oops! Seems like that rank is to high!")
+            let embederror1 = new discord.RichEmbed()
+            .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+            .setDescription("-> **Error**: It seems like the person you tried to demote has a too high of a rank! ")
+            .setColor("#ef3939")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+
+
+						message.channel.send(embederror1);
 					
 					} else {
 
@@ -431,16 +474,13 @@ function isCommand2(command, message){
 						.then(function(roles){
 
 							let embedfo2ur = new discord.RichEmbed()
-              .setTitle(`Demotion Notice`) 
-              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
-							.setColor("#3465ed")
+              .setTitle(`Demote Notice`) 
+              .setDescription(`<@${message.author.id}> has **demoted** ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
+							.setColor("#ccccdd")
               .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-							.setFooter("All demotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-							.setTimestamp();
-
+						
 						
             message.channel.send(embedfo2ur);
-            console.log(`${username} was demoted from ${roles.oldRole.Name} to ${roles.newRole.Name}!`)
 
             let embedfourBA = new discord.RichEmbed()
             .setTitle(`Demotion Notice`)
@@ -454,27 +494,84 @@ function isCommand2(command, message){
 
            
 						}).catch(function(err){
-							message.channel.send("Failed to promote. Please try again!")
+
+              client.users.get("236238325306884096").send(err);
+
+              let embederror12 = new discord.RichEmbed()
+              .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+              .setDescription("-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+              .setColor("#ef3939")
+              .setFooter(message.author.username, message.author.displayAvatarURL)
+              .setTimestamp();
+  
+  
+              message.channel.send(embederror12);
+            
 						});
 					}
 				}).catch(function(err){
-					message.channel.send("Couldn't find them! Please try again!")
+
+          client.users.get("236238325306884096").send(err);
+
+          let embederror122 = new discord.RichEmbed()
+          .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+          .setDescription("-> **Error**: It seems like I can't find them in Roblox! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+          .setColor("#ef3939")
+          .setFooter(message.author.username, message.author.displayAvatarURL)
+          .setTimestamp();
+
+
+          message.channel.send(embederror122);
+        
 				});
 			}).catch(function(err){ 
-				message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+        client.users.get("236238325306884096").send(err);
+
+        let embederror12 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription(`-> **Error**: It seems like ${username} isn't in the NYDHS Roblox group! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.`)
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror12);
+      
 			});
     	} else {
-    		message.channel.send("Oops! I think you forgot to give me the username.")
+
+        let embederror123 = new discord.RichEmbed()
+        .setTitle("Help Menu | Command: .demote")
+        .setColor("#ccccdd")
+        .addField("Description", "Demotes a user by one rank.", true)
+        .addField("Usage", ".demote [Roblox username]", true)
+        .addField("Example", ".demote Nettykeepers", true)
+
+      
+
+
+        message.channel.send(embederror123);
     	}
     	return;
 	}
-
+	
 
 if(isCommand2(`Shout`, message)){
   // if(message.author.id !== ("236238325306884096")) return;
   if(!message.member.roles.some(r=>["NYDHS Maintenance", "Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
   if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
-  message.reply('Please specify a message to shout.')
+
+  let embederror123 = new discord.RichEmbed()
+        .setTitle("Help Menu | Command: .shout")
+        .setColor("#ccccdd")
+        .addField("Description", "Shouts to the Roblox group.", true)
+        .addField("Usage", ".shout [message]", true)
+        .addField("Example", ".shout Welcome to NYDHS!", true)
+
+      
+
+
+        message.channel.send(embederror123);
   return;
   
 }
@@ -485,11 +582,9 @@ roblox.shout(groupId, shoutMSG)
 
 		let embedsix = new discord.RichEmbed()
 		.setTitle(`Group Shout Notice`)
-    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
-    .setColor("#3465ed")
+    .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}>`)
+    .setColor("#ccccdd")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-    .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-    .setTimestamp();
 
 		message.channel.send(embedsix); // OPTIONAL - Logs specified string to the console
     // message.channel.send('Shouted to the group!') // OPTIONAL - Sends a message to the channel
@@ -498,7 +593,7 @@ roblox.shout(groupId, shoutMSG)
     let embedsix1 = new discord.RichEmbed()
 		.setTitle(`Group Shout Notice`)
     .setDescription(`${shoutMSG} \nMessage by: <@${message.author.id}> \n- \nChannel Used: #${message.channel.name}`)
-    .setColor("#3465ed")
+    .setColor("#ccccdd")
     .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
     .setFooter("All group shouts via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
     .setTimestamp();
@@ -508,7 +603,22 @@ roblox.shout(groupId, shoutMSG)
     
 	})
 	.catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
-		console.log(`Shout error: ${error}`) // Log the error to console if there is one.
+  client.users.get("236238325306884096").send(error);
+
+  let embederror124 = new discord.RichEmbed()
+  .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+  .setDescription(`-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Contact the bot developer via Discord, Coolguzman11#8633.`)
+  .setColor("#ef3939")
+  .setFooter(message.author.username, message.author.displayAvatarURL)
+  .setTimestamp();
+
+
+  message.channel.send(embederror124);
+
+
+  
+  
+  console.log(`Shout error: ${error}`) // Log the error to console if there is one.
 	});
 }
 
@@ -526,7 +636,16 @@ if(isCommand2('Suspend', message)){
       .then(function(rank){
         if(maximumRank <= rank){
 
-          message.reply("Oops! Seems like that rank is to high!")
+          let embederror10 = new discord.RichEmbed()
+          .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+          .setDescription("-> **Error**: It seems like the person you tried to suspend has a too high of a rank! ")
+          .setColor("#ef3939")
+          .setFooter(message.author.username, message.author.displayAvatarURL)
+          .setTimestamp();
+
+
+          message.channel.send(embederror10);
+        
         
         } else {
           let roleset= 10;
@@ -536,11 +655,10 @@ if(isCommand2('Suspend', message)){
 
             let embedfou2r = new discord.RichEmbed()
             .setTitle(`Suspension Notice`)
-            .setDescription(`<@${message.author.id}> has **suspended** ${username}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
-            .setColor("#3465ed")
+            .setDescription(`<@${message.author.id}> has **suspended** ${username}!`)
+            .setColor("#ccccdd")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All suspensions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-            .setTimestamp();
+            
 
           
           message.channel.send(embedfou2r);
@@ -559,18 +677,65 @@ if(isCommand2('Suspend', message)){
       
 
          
-          }).catch(function(err){
-            message.channel.send("Failed to promote. Please try again!")
+         
+					}).catch(function(err){
+
+            client.users.get("236238325306884096").send(err);
+
+            let embederror12 = new discord.RichEmbed()
+            .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+            .setDescription("-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If you still need further assistance, say **rankhelp**. If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+            .setColor("#ef3939")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+
+
+            message.channel.send(embederror12);
+          
           });
         }
       }).catch(function(err){
-        message.channel.send("Couldn't find them! Please try again!")
+
+        client.users.get("236238325306884096").send(err);
+
+        let embederror122 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription("-> **Error**: It seems like I can't find them in Roblox! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror122);
+      
       });
     }).catch(function(err){ 
-      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+      client.users.get("236238325306884096").send(err);
+
+      let embederror12 = new discord.RichEmbed()
+      .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+      .setDescription(`-> **Error**: It seems like ${username} isn't in the NYDHS Roblox group! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.`)
+      .setColor("#ef3939")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
+
+
+      message.channel.send(embederror12);
+    
     });
     } else {
-      message.channel.send("Oops! I think you forgot to give me the username.")
+
+      let embederror123 = new discord.RichEmbed()
+      .setTitle("Help Menu | Command: .suspend")
+      .setColor("#ccccdd")
+      .addField("Description", "Suspends a user within the NYDHS group.", true)
+      .addField("Usage", ".suspend [Roblox username]", true)
+      .addField("Example", ".suspend coolguzman11", true)
+
+    
+
+
+      message.channel.send(embederror123);
     }
     return;
 }
@@ -590,7 +755,16 @@ if(isCommand2('Rank', message)){
       .then(function(rank){
         if(maximumRank <= rank){
 
-          message.reply("Oops! Seems like I can't do that!")
+          let embederror10 = new discord.RichEmbed()
+          .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+          .setDescription("-> **Error**: It seems like the person you tried to rank has a too high of a rank! ")
+          .setColor("#ef3939")
+          .setFooter(message.author.username, message.author.displayAvatarURL)
+          .setTimestamp();
+
+
+          message.channel.send(embederror10);
+        
         
         } else {
           
@@ -603,11 +777,10 @@ if(isCommand2('Rank', message)){
 
             let embedfour7 = new discord.RichEmbed()
             .setTitle(`Ranking Notice`)
-            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
-            .setColor("#3465ed")
+            .setDescription(`<@${message.author.id}> has **ranked** ${username} to ${rankname12}!`)
+            .setColor("#ccccdd")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All promotions via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-            .setTimestamp();
+    
 
           
           message.channel.send(embedfour7);
@@ -625,18 +798,64 @@ if(isCommand2('Rank', message)){
          
 
          
-          }).catch(function(err){
-            message.channel.send("Failed to promote. Please try again! *(Need help? Say `rankhelp`)*")
+					}).catch(function(err){
+
+            client.users.get("236238325306884096").send(err);
+
+            let embederror12 = new discord.RichEmbed()
+            .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+            .setDescription("-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If you still need further assistance, say **rankhelp**. If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+            .setColor("#ef3939")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+
+
+            message.channel.send(embederror12);
+          
           });
         }
       }).catch(function(err){
-        message.channel.send("Couldn't find them! Please try again! *(Need help? Say `rankhelp`)*")
+
+        client.users.get("236238325306884096").send(err);
+
+        let embederror122 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription("-> **Error**: It seems like I can't find them in Roblox! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror122);
+      
       });
     }).catch(function(err){ 
-      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group. *(Need help? Say "rankhelp")*`)
+      client.users.get("236238325306884096").send(err);
+
+      let embederror12 = new discord.RichEmbed()
+      .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+      .setDescription(`-> **Error**: It seems like ${username} isn't in the NYDHS Roblox group! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.`)
+      .setColor("#ef3939")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
+
+
+      message.channel.send(embederror12);
+    
     });
     } else {
-      message.channel.send("Oops! I think you forgot to give me the username. *(Need help? Say `rankhelp`)*")
+
+      let embederror123 = new discord.RichEmbed()
+      .setTitle("Help Menu | Command: .rank")
+      .setColor("#ccccdd")
+      .addField("Description", "Ranks a user to a desired ranked. Say **rankhelp** for the rank codes.", true)
+      .addField("Usage", ".rank [Roblox username] [rank number]", true)
+      .addField("Example", ".rank Elwood03 85", true)
+
+    
+
+
+      message.channel.send(embederror123);
     }
     return;
 }
@@ -653,8 +872,7 @@ if(isCommand('rankhelp', message)){
             .addField("Lieutenant - 85 \nSergeant - 80 \nCorporal - 75 \nSpecial Response Team Agent - 70 \nInvestigations Office - 60 \nSecret Service Agent - 50 \nFederal Protection Officer - 40 \nAgent in Training - 30 \nRepresentative - 20", "**About the Rank Command** \nIn order for you to properly use the rank command you are to find the numerical number form that matches the rank you are trying to rank the user. \n**For Example:** .rank coolguzman11 50")
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-            .setTimestamp();
+          
 
             message.reply().then(msg => {msg.delete[9000]});
             message.channel.send(embedfour1).then(msg => {msg.delete[9000]});
@@ -678,8 +896,17 @@ if(isCommand2('exile', message)){
       .then(function(rank){
         if(maximumRank <= rank){
 
-          message.reply("Oops! Seems like that rank is to high!")
-        
+          
+          let embederror10 = new discord.RichEmbed()
+          .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+          .setDescription("-> **Error**: It seems like the person you tried to terminate has a too high of a rank! ")
+          .setColor("#ef3939")
+          .setFooter(message.author.username, message.author.displayAvatarURL)
+          .setTimestamp();
+
+
+          message.channel.send(embederror10);
+                
         } else {
        
 
@@ -688,11 +915,10 @@ if(isCommand2('exile', message)){
 
             let embedfou22r = new discord.RichEmbed()
             .setTitle(`Termination Notice`)
-            .setDescription(`<@${message.author.id}> has **terminated** ${username}! \n \n***Like the NYDHS Automated System? Have some spare bucks? \nBecome a Patron today! [ [Click here to learn more]](https://www.patreon.com/coolguzman11)***`)
+            .setDescription(`<@${message.author.id}> has **terminated** ${username}!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-            .setTimestamp();
+        
 
           
           message.channel.send(embedfou22r);
@@ -710,19 +936,65 @@ if(isCommand2('exile', message)){
             client.guilds.get("490607262188961822").channels.get("504770451441188874").send(embedfou223r);
       
 
-         
-          }).catch(function(err){
-            message.channel.send("Failed to promote. Please try again!")
+        
+					}).catch(function(err){
+
+            client.users.get("236238325306884096").send(err);
+
+            let embederror12 = new discord.RichEmbed()
+            .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+            .setDescription("-> **Error**: It seems like I have ran into an internal error! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If you still need further assistance, say **rankhelp**. If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+            .setColor("#ef3939")
+            .setFooter(message.author.username, message.author.displayAvatarURL)
+            .setTimestamp();
+
+
+            message.channel.send(embederror12);
+          
           });
         }
       }).catch(function(err){
-        message.channel.send("Couldn't find them! Please try again!")
+
+        client.users.get("236238325306884096").send(err);
+
+        let embederror122 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription("-> **Error**: It seems like I can't find them in Roblox! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror122);
+      
       });
     }).catch(function(err){ 
-      message.channel.send(`Sorry, but ${username} isn't in the NYDHS Group.`)
+      client.users.get("236238325306884096").send(err);
+
+      let embederror12 = new discord.RichEmbed()
+      .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+      .setDescription(`-> **Error**: It seems like ${username} isn't in the NYDHS Roblox group! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.`)
+      .setColor("#ef3939")
+      .setFooter(message.author.username, message.author.displayAvatarURL)
+      .setTimestamp();
+
+
+      message.channel.send(embederror12);
+    
     });
     } else {
-      message.channel.send("Oops! I think you forgot to give me the username.")
+
+      let embederror123 = new discord.RichEmbed()
+      .setTitle("Help Menu | Command: .exile")
+      .setColor("#ccccdd")
+      .addField("Description", "Terminates a desired user.", true)
+      .addField("Usage", ".exile [Roblox username]", true)
+      .addField("Example", ".exile coolguzman11", true)
+
+    
+
+
+      message.channel.send(embederror123);
     }
     return;
 }
@@ -734,22 +1006,25 @@ if(isCommand2('accept', message)){
       // if(message.author.id !== ("236238325306884096")) return;
     var username = args[1]
     if (username){
-    
-         roblox.handleJoinRequest(groupId, username, true)
-          .then(function(promise){
+
+      roblox.getIdFromUsername(username)
+      .then(function(id){
+        roblox.handleJoinRequest(groupId, username, true)
+        .then(function(promise){
+          roblox.getRankInGroup(groupId, id)
+          .then(function(rank){
 
             let embedfou22r = new discord.RichEmbed()
             .setTitle(`Acceptance Notice`)
             .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security!`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
-            .setTimestamp();
-
+          
+  
           
           message.channel.send(embedfou22r);
-
-
+  
+  
           let embedfou223r = new discord.RichEmbed()
           .setTitle(`Acceptance Notice`)
           .setDescription(`<@${message.author.id}> has **accepted** ${username} into the New York Department of Homeland Security! \n- \nChannel Used: #${message.channel.name}`)
@@ -757,18 +1032,55 @@ if(isCommand2('accept', message)){
           .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
           .setFooter("All commands ran via the bot are being monitored and recorded on a Trello Board. Abuse of this system will result in a bot usage blacklist.")
           .setTimestamp();
-
-
+  
+  
           client.guilds.get("490607262188961822").channels.get("509520756338851842").send(embedfou223r);
+
+          }).catch(function(err){
+            console.log(err)
+            message.reply("Contact my dad.")
+
+          });
+
+         
+      }).catch(function(err){
+
+        client.users.get("236238325306884096").send(err);
+
+        let embederror122 = new discord.RichEmbed()
+        .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
+        .setDescription("-> **Error**: It seems like I couldn't accept them into NYDHS! \n-> **Solution:** Please make sure your spelling the Roblox name correctly, and try again (Yes, capitalization matters!). If this error continues contact the bot developer via Discord, Coolguzman11#8633.")
+        .setColor("#ef3939")
+        .setFooter(message.author.username, message.author.displayAvatarURL)
+        .setTimestamp();
+
+
+        message.channel.send(embederror122);
+
+      });
+    
+       
       
 
          
           }).catch(function(err){
-            message.channel.send("Failed to accept. Please try again!")
+            console.log(err)
+            message.reply("Contact my dad.")
           });
         
     } else {
-      message.channel.send("Oops! I think you forgot to give me the username.")
+
+      let embederror123 = new discord.RichEmbed()
+      .setTitle("Help Menu | Command: .accept")
+      .setColor("#ccccdd")
+      .addField("Description", "Accepts a desired user into NYDHS.", true)
+      .addField("Usage", ".accept [Roblox username]", true)
+      .addField("Example", ".accept coolguzman11", true)
+
+    
+
+
+      message.channel.send(embederror123);
     }
     return;
 }
