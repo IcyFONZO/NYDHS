@@ -1101,10 +1101,9 @@ if(isCommand2('say', message)){
           .setDescription("• Formats for all logging channels have been updated! \n- While filling out your patrol log, you no longer will have to put your division abbreviation. The bot will look at your roles and send off the log to the appropriate Trello List. \n• All Roblox Commands have been updated! \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
             
 
-          client.guilds.get("275080442560905216").channels.get("517162401909440522").send(embed222)
 
-          // client.guilds.get("389966672741662720").channels.get("430432065151041556").send("@everyone");
-          // client.guilds.get("389966672741662720").channels.get("430432065151041556").send(embed222);
+          client.guilds.get("389966672741662720").channels.get("430432065151041556").send("@everyone");
+          client.guilds.get("389966672741662720").channels.get("430432065151041556").send(embed222);
 
 
 
