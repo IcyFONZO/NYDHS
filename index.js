@@ -1111,7 +1111,7 @@ if(isCommand2('say', message)){
             .setDescription(`**Message From:** <@${message.author.id}> \n \n${botmessage}`)
             .setColor("#3465ed")
             .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
-            .setFooter("This Automated System is brought to you by Cool's Coding Service. For more information contact @Coolguzman11#8633.")
+            .setFooter("This Automated System is brought to you by Cool's. Coding. Service. For more information contact @Coolguzman11#8633.")
             .setTimestamp();
 
             message.channel.send("@here")
@@ -1121,13 +1121,24 @@ if(isCommand2('say', message)){
     }
 
 
-    if(isCommand2('logcount', message)){
+    if(isCommand2('update', message)){
       if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
           return;
     
-          message.delete().catch();
-    
+          let embed222 = new discord.RichEmbed()
+          .setTitle("Update Log | 12/28/2018")
+          .setDescription("• Formats for all logging channels have been updated! \n↪ While filling out your patrol log, you no longer will have to put your division abbreviation. The bot will look at your roles and send off the log to the appropriate Trello List. \n• All Roblox Commands have been updated! \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
             
+
+          client.guilds.get("275080442560905216").channels.get("517162401909440522").send(embed222)
+
+          // client.guilds.get("389966672741662720").channels.get("430432065151041556").send("@everyone");
+          // client.guilds.get("389966672741662720").channels.get("430432065151041556").send(embed222);
+
+
+
+
+
         }
     
     
