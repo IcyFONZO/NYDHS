@@ -129,6 +129,7 @@ client.on("message", message => {
 
     //SS
 		if(message.member.roles.some(r=>["Secret Service"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
+      if(isCommand('Username:', message)){ 
 
     postTrello(trelloClient, trelloIDList, message).then((data) => {
       
@@ -158,9 +159,11 @@ client.on("message", message => {
   
     });
   }
+}
     //SRT
 		if(message.member.roles.some(r=>["Special Response Team"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
-    
+      if(isCommand('Username:', message)){ 
+
     const postTrello = require("./lib/trello/post_trello_SRT");
        
     postTrello(trelloClient, trelloIDList2, message).then((data) => {
@@ -185,10 +188,12 @@ client.on("message", message => {
       console.log(`FAILED!: ${err}`);
     });
     }
+  }
       
     //FPS
 		if(message.member.roles.some(r=>["Federal Protective Service"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
-    	
+      if(isCommand('Username:', message)){ 
+
       
       const postTrello = require("./lib/trello/post_trello_FPS");
              
@@ -214,11 +219,12 @@ client.on("message", message => {
           console.log(`FAILED!: ${err}`);
       });
       }
-
+    }
 
       //HSI
       if(message.member.roles.some(r=>["Homeland Security Investigations"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
-    	
+        if(isCommand('Username:', message)){ 
+
           
           const postTrello = require("./lib/trello/post_trello_HSI");
              
@@ -247,6 +253,7 @@ client.on("message", message => {
           });
         }
     }
+  }
   if(message.author.bot) return;
   if (message.channel.id === discordInactive) {
 
@@ -259,7 +266,7 @@ client.on("message", message => {
       let raskj64 = new discord.RichEmbed()
       .setTitle("Inactivity Notice Format")
       .setDescription("The following format **MUST** be followed in-order for your Inactivity Notice to be logged into the Trello.")
-      .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process. \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
+      .addField("Username: \nRank: \nReason: \nDate of Leave: \nDate of Return: \nNote:", "**Please Note:** The format only has to be in the order provided, capitalization will not affect the logging process. \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
       .setColor("#ccccdd")
       .setThumbnail("https://cdn.discordapp.com/attachments/462447883849957397/462653415990755339/download.png")
 
