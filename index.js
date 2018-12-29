@@ -385,7 +385,7 @@ function isCommand2(command, message){
            
 						}).catch(function(err){
 
-              client.users.get("236238325306884096").send(err);
+      console.log(err)
 
               let embederror12 = new discord.RichEmbed()
               .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -401,7 +401,7 @@ function isCommand2(command, message){
 					}
 				}).catch(function(err){
 
-          client.users.get("236238325306884096").send(err);
+  console.log(err)
 
           let embederror122 = new discord.RichEmbed()
           .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -415,7 +415,7 @@ function isCommand2(command, message){
         
 				});
 			}).catch(function(err){ 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror12 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -431,12 +431,9 @@ function isCommand2(command, message){
     	} else {
 
         let embederror123 = new discord.RichEmbed()
-        .setTitle("Help Menu | Command: .promote")
+        .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+        .setDescription("\n**Command Information:** \nDescription: Promotes a user by one rank. \nUsage: .promote [Roblox username] \nExample: .promote coolguzman11")
         .setColor("#ccccdd")
-        .addField("Description", "Promotes a user by one rank.", true)
-        .addField("Usage", ".promote [Roblox username]", true)
-        .addField("Example", ".promote Nettykeepers", true)
-
       
 
 
@@ -495,7 +492,7 @@ function isCommand2(command, message){
            
 						}).catch(function(err){
 
-              client.users.get("236238325306884096").send(err);
+      console.log(err)
 
               let embederror12 = new discord.RichEmbed()
               .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -511,7 +508,7 @@ function isCommand2(command, message){
 					}
 				}).catch(function(err){
 
-          client.users.get("236238325306884096").send(err);
+  console.log(err)
 
           let embederror122 = new discord.RichEmbed()
           .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -525,7 +522,7 @@ function isCommand2(command, message){
         
 				});
 			}).catch(function(err){ 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror12 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -541,15 +538,12 @@ function isCommand2(command, message){
     	} else {
 
         let embederror123 = new discord.RichEmbed()
-        .setTitle("Help Menu | Command: .demote")
+        .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+        .setDescription("\n**Command Information:** \nDescription: Demotes a user by one rank. \nUsage: .demote [Roblox username] \nExample: .demote coolguzman11")
         .setColor("#ccccdd")
-        .addField("Description", "Demotes a user by one rank.", true)
-        .addField("Usage", ".demote [Roblox username]", true)
-        .addField("Example", ".demote Nettykeepers", true)
 
       
-
-
+    
         message.channel.send(embederror123);
     	}
     	return;
@@ -562,15 +556,10 @@ if(isCommand2(`Shout`, message)){
   if (!args) { // Check if there's no arguments to use to shout, and return (stop going further)
 
   let embederror123 = new discord.RichEmbed()
-        .setTitle("Help Menu | Command: .shout")
-        .setColor("#ccccdd")
-        .addField("Description", "Shouts to the Roblox group.", true)
-        .addField("Usage", ".shout [message]", true)
-        .addField("Example", ".shout Welcome to NYDHS!", true)
-
+      .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+      .setDescription("\n**Command Information:** \nDescription: Shouts to the Roblox group. \nUsage: .shout [message] \nExample: .shout hello!")
+      .setColor("#ccccdd")
       
-
-
         message.channel.send(embederror123);
   return;
   
@@ -680,7 +669,7 @@ if(isCommand2('Suspend', message)){
          
 					}).catch(function(err){
 
-            client.users.get("236238325306884096").send(err);
+    console.log(err)
 
             let embederror12 = new discord.RichEmbed()
             .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -696,7 +685,7 @@ if(isCommand2('Suspend', message)){
         }
       }).catch(function(err){
 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror122 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -726,13 +715,9 @@ if(isCommand2('Suspend', message)){
     } else {
 
       let embederror123 = new discord.RichEmbed()
-      .setTitle("Help Menu | Command: .suspend")
+      .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+      .setDescription("\n**Command Information:** \nDescription: Suspends a user within the NYDHS group. \nUsage: .suspend [Roblox username] \nExample: .suspend coolguzman11")
       .setColor("#ccccdd")
-      .addField("Description", "Suspends a user within the NYDHS group.", true)
-      .addField("Usage", ".suspend [Roblox username]", true)
-      .addField("Example", ".suspend coolguzman11", true)
-
-    
 
 
       message.channel.send(embederror123);
@@ -800,7 +785,7 @@ if(isCommand2('Rank', message)){
          
 					}).catch(function(err){
 
-            client.users.get("236238325306884096").send(err);
+    console.log(err)
 
             let embederror12 = new discord.RichEmbed()
             .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -816,7 +801,7 @@ if(isCommand2('Rank', message)){
         }
       }).catch(function(err){
 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror122 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -846,14 +831,9 @@ if(isCommand2('Rank', message)){
     } else {
 
       let embederror123 = new discord.RichEmbed()
-      .setTitle("Help Menu | Command: .rank")
+      .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+      .setDescription("\n**Command Information:** \nDescription: Ranks a user to a desired ranked. Say **rankhelp** for the rank codes. \nUsage: .rank [Roblox username] [rank number] \nExample: .rank coolguzman11 10")
       .setColor("#ccccdd")
-      .addField("Description", "Ranks a user to a desired ranked. Say **rankhelp** for the rank codes.", true)
-      .addField("Usage", ".rank [Roblox username] [rank number]", true)
-      .addField("Example", ".rank Elwood03 85", true)
-
-    
-
 
       message.channel.send(embederror123);
     }
@@ -939,7 +919,7 @@ if(isCommand2('exile', message)){
         
 					}).catch(function(err){
 
-            client.users.get("236238325306884096").send(err);
+    console.log(err)
 
             let embederror12 = new discord.RichEmbed()
             .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -955,7 +935,7 @@ if(isCommand2('exile', message)){
         }
       }).catch(function(err){
 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror122 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -985,15 +965,11 @@ if(isCommand2('exile', message)){
     } else {
 
       let embederror123 = new discord.RichEmbed()
-      .setTitle("Help Menu | Command: .exile")
+      .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+      .setDescription("\n**Command Information:** \nDescription: Terminates a desired user. \nUsage: .exile [Roblox username] \nExample: .exile coolguzman11")
       .setColor("#ccccdd")
-      .addField("Description", "Terminates a desired user.", true)
-      .addField("Usage", ".exile [Roblox username]", true)
-      .addField("Example", ".exile coolguzman11", true)
 
     
-
-
       message.channel.send(embederror123);
     }
     return;
@@ -1045,7 +1021,7 @@ if(isCommand2('accept', message)){
          
       }).catch(function(err){
 
-        client.users.get("236238325306884096").send(err);
+console.log(err)
 
         let embederror122 = new discord.RichEmbed()
         .setTitle("<a:oops:528371628032262145> Whoops! Looks like I came upon an error!")
@@ -1071,15 +1047,10 @@ if(isCommand2('accept', message)){
     } else {
 
       let embederror123 = new discord.RichEmbed()
-      .setTitle("Help Menu | Command: .accept")
+      .setTitle("<:what:528422646598336523> This is awkward... you know I need a username right?")
+      .setDescription("\n**Command Information:** \nDescription: Accepts a desired user into NYDHS. \nUsage: .accept [Roblox username] \nExample: .accept coolguzman11")
       .setColor("#ccccdd")
-      .addField("Description", "Accepts a desired user into NYDHS.", true)
-      .addField("Usage", ".accept [Roblox username]", true)
-      .addField("Example", ".accept coolguzman11", true)
-
     
-
-
       message.channel.send(embederror123);
     }
     return;
@@ -1127,7 +1098,7 @@ if(isCommand2('say', message)){
     
           let embed222 = new discord.RichEmbed()
           .setTitle("Update Log | 12/28/2018")
-          .setDescription("• Formats for all logging channels have been updated! \n↪ While filling out your patrol log, you no longer will have to put your division abbreviation. The bot will look at your roles and send off the log to the appropriate Trello List. \n• All Roblox Commands have been updated! \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
+          .setDescription("• Formats for all logging channels have been updated! \n- While filling out your patrol log, you no longer will have to put your division abbreviation. The bot will look at your roles and send off the log to the appropriate Trello List. \n• All Roblox Commands have been updated! \n \n*Like the NYDHS Automated System? [ [Click here to learn more!]](https://www.patreon.com/coolguzman11)*")
             
 
           client.guilds.get("275080442560905216").channels.get("517162401909440522").send(embed222)
