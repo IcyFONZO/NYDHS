@@ -1102,14 +1102,18 @@ if(isCommand2('say', message)){
     if(isCommand2('logsfps', message)){
       if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
           return;
-    
-          Trello.list.search(trelloIDList3).then(function (response) {
-            message.reply(response)
-            console.log('response ', response);
-        }).catch(function (error) {
-            console.log('error', error);
-        });
-
+         
+            const postTrello = require("./lib/trello/post_trello_test");
+       
+            postTrello(trelloClient, trelloIDList3, message).then((data) => {
+              
+        message.reply(data)
+            
+              
+            }).catch((err) => {
+              console.log(`FAILED!: ${err}`);
+            });
+            
 
         }
     
