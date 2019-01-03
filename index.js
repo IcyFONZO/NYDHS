@@ -1103,7 +1103,7 @@ if(isCommand2('say', message)){
       if(!message.member.roles.some(r=>["NYDHS Maintenance"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
           return;
     
-          Trello.list.searchField(trelloIDList3, 'Federal Protective Service Logs').then(function (response) {
+          Trello.list.search(trelloIDList3).then(function (response) {
             message.reply(response)
             console.log('response ', response);
         }).catch(function (error) {
