@@ -11,6 +11,57 @@ const trelloIDList2 = process.env.TRELLO_ID_LIST_SRT;
 const trelloIDList3 = process.env.TRELLO_ID_LIST_FPS;
 const trelloIDList4 = process.env.TRELLO_ID_LIST_HSI;
 const trelloIDList5 = process.env.TRELLO_ID_LIST_INACTIVE;
+const roblox = require('noblox.js');
+const cookie = process.env.cookie;
+
+roblox.options.jar.session = cookie;
+
+const relog = () => {
+  return roblox.getVerification({url: 'https://www.roblox.com/my/account#!/security'})
+    .then((ver) => {
+      return roblox.getGeneralToken().then((token) => {
+        return roblox.http({
+          url: 'https://www.roblox.com/authentication/signoutfromallsessionsandreauthenticate',
+          options: {
+            method: 'POST',
+            resolveWithFullResponse: true,
+            verification: ver.header,
+            jar: null,
+            headers: {
+              'X-CSRF-TOKEN': token
+            },
+            form: {
+              __RequestVerificationToken: ver.inputs.__RequestVerificationToken
+            }
+          }
+        }).then((res) => {
+          console.log(res.statusCode);
+          console.log(res.body);
+          var cookies = res.headers['set-cookie'];
+          if (cookies) {
+            roblox.options.jar.session = cookies.toString().match(/\.ROBLOSECURITY=(.*?);/)[1];
+          }
+        });
+      });
+    });
+};
+
+(async () => {
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
+  await relog();
+  console.log('...' + roblox.options.jar.session.substr(-20));
+  console.log(await roblox.getCurrentUser());
+})();
+
+
+
+
+
+
+
+
+
 [trelloKey, trelloToken, discordBotToken, discordChannelID, discordInactive, discordComplaints, trelloIDList, trelloIDList2, trelloIDList3, trelloIDList4, trelloIDList5].forEach(i => {
   if (!i) {
     console.log("Token is undefined. Please set .env file. Exit...");
@@ -275,21 +326,7 @@ client.on("message", message => {
     message.delete().catch();
     
   }
-  const roblox = require('noblox.js');
-  const cookie = process.env.cookie;
 
-  function login() {
-    return roblox.cookieLogin(cookie);
-    }
-    
-    login() // Log into ROBLOX
-        .then(function() { // After the function has been executed
-            console.log('Logged in.') // Log to the console that we've logged in
-        })
-        .catch(function(error) { // This is a catch in the case that there's an error. Not using this will result in an unhandled rejection error.
-            console.log(`Login error: ${error}`) // Log the error to console if there is one.
-        });
-        
   var prefix = '.';
   var groupId = 3632026;
   var maximumRank = 85;
