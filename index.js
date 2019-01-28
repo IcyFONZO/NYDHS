@@ -222,7 +222,7 @@ client.on("message", message => {
     }
 
       //HSI
-      if(message.member.roles.some(r=>["Homeland Security Investigations"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
+      if(message.member.roles.some(r=>["Intelligence Office"].includes(r.name)) ) {// OPTIONAL - Checks if the sender has the specified roles to carry on further
         if(isCommand('Username:', message)){ 
 
           
@@ -338,12 +338,12 @@ function isCommand2(command, message){
   return content.startsWith(prefix + command);
 }
 
- 
 	var args = message.content.split(/[ ]+/)
 
   if(isCommand2('Promote', message)){
 		if(!message.member.roles.some(r=>["NYDHS Maintenance" ,"Secretary", "Deputy Secretary", "Assistant Secretary", "Head of Operations", "Director of Intelligence", "SRT Commander", "Secret Service Director", "Chief of Federal Protection", "Captain", "Lieutenant", "Sergeant"].includes(r.name)) ) // OPTIONAL - Checks if the sender has the specified roles to carry on further
         return;
+
         
         // if(message.author.id !== ("236238325306884096")) return;
     	var username = args[1]
